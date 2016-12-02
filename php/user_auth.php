@@ -25,5 +25,39 @@ function register($username, $password){
         throw new Exception('Could not register you in database - please try again later.');
     }
 
+
     return ture;
+}
+
+function login($username, $password) {
+    $conn = db_connect();
+
+    $result = $conn->query("select * from userinfo where user_name='".$username."'");
+    if(!$result) {
+        throw new Exception('Could not log you in.');
+    }
+
+    if($result->num_rows>0){
+        $row = $result->fetch_assoc();
+        $hash = $row[password];
+        if(password_verify($password,$hash)){
+            return true;
+        }
+        else {
+           throw new Exception('Could not log you in.');
+        }
+    }
+    else {
+        throw new Exception('Could not log you in');
+    }
+}
+
+function check_valid_user() {
+    if(isset($_SESSION['valid_user'])) {
+        echo "Logged in as ".$_SESSION['valid_user'];
+    }
+    else {
+        echo 'You are not logged in.';
+        exit;
+    }
 }
