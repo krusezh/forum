@@ -18,9 +18,22 @@ if ($username && $userpwd) {
         $_SESSION['valid_user'] = $username;
     }
     catch (Exception $e) {
-        $e->getMessage();
+        echo $e->getMessage();
         exit;
     }
 }
 
 check_valid_user();
+?>
+<html>
+<body>
+    <form action="profile.php" method="post">
+        <table>
+            <tr>
+                <td><input type="text" name="username" value="<?php echo $_SESSION['valid_user']?>" /></td>
+                <td><input type="submit" value="submit" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

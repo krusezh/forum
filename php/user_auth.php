@@ -25,13 +25,12 @@ function register($username, $password){
         throw new Exception('Could not register you in database - please try again later.');
     }
 
-
+    $conn->close();
     return ture;
 }
 
 function login($username, $password) {
     $conn = db_connect();
-
     $result = $conn->query("select * from userinfo where user_name='".$username."'");
     if(!$result) {
         throw new Exception('Could not log you in.');
@@ -41,6 +40,7 @@ function login($username, $password) {
         $row = $result->fetch_assoc();
         $hash = $row[password];
         if(password_verify($password,$hash)){
+            $conn->close();
             return true;
         }
         else {
@@ -48,7 +48,7 @@ function login($username, $password) {
         }
     }
     else {
-        throw new Exception('Could not log you in');
+        throw new Exception('Could not log you in.');
     }
 }
 

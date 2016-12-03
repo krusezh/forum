@@ -26,7 +26,7 @@ mysql_select_db('my_db');
 它的作用是设置本次数据库联接过程中,数据传输的默认字符集
 */
 mysql_query("set names utf8;");
-必须将gb2312(本地编码)转换成utf-8,也可以使用iconv()函数 
+//必须将gb2312(本地编码)转换成utf-8,也可以使用iconv()函数 
 mysql_query(mb_convet_encoding("insert into my_table values('测试');","utf-8","gb2312")); 
 ?> 
 ```    
