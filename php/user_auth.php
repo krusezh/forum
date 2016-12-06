@@ -25,6 +25,7 @@ function register($username, $password){
         throw new Exception('Could not register you in database - please try again later.');
     }
 
+    echo 'Your registeration was successful. Go to the members page to start setting up your profile!';
     $conn->close();
     return ture;
 }
@@ -52,12 +53,29 @@ function login($username, $password) {
     }
 }
 
-function check_valid_user() {
-    if(isset($_SESSION['valid_user'])) {
-        echo "Logged in as ".$_SESSION['valid_user'];
+function logout($old_user) {
+
+    $result_dest = session_destroy();
+
+    if(!empty($old_user)){
+        if ($result_dest) {
+            echo "Logged out.<br />";
+        }
+        else {
+            echo "Could not log you out.<br />";
+        }
     }
     else {
-        echo 'You are not logged in.';
-        exit;
+        echo "You were not logged in, and so have not been logged out.<br />";
     }
 }
+
+function check_valid_user() {
+    if(isset($_SESSION['valid_user'])) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+

@@ -18,14 +18,14 @@ create table aritle(
 );
 
 create table aritle_info(
-	aritle_id int unsigned not null primary key,
+	aritle_id int unsigned not null auto_increment primary key,
 	title char(100) not null,
 	hits int unsigned not null,
 	node_id int unsigned not null
 );
 
 create table aritle_content(
-	aritle_id int unsigned not null primary key,
+	aritle_id int unsigned not null auto_increment primary key,
 	aritle_content text not null
 );
 

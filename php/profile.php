@@ -8,16 +8,25 @@
 header("Content-type:text/html;charset=utf-8");
 require_once ('functions.php');
 session_start();
+ob_start();
 
 $username = $_REQUEST['username'];
 
+
 try {
-    if(!filled_out($_REQUEST)){
-        throw new Exception('Wrong name, no info.');
+    if(!$username) {
+        throw new Exception('404: Not Found');
     }
-    display_info($username);
+    else {
+        display_head($username);
+        display_top();
+        display_wrapper('profile',$username);
+        display_buttom();
+    }
 }
 catch (Exception $e) {
+    ob_end_clean();
+    display_head($e->getMessage());
     echo $e->getMessage();
     exit;
 }

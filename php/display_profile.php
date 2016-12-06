@@ -7,18 +7,9 @@
  */
 
 function display_info($username) {
-    $conn = db_connect();
-    $query = "select user_id, user_name, reg_time from userinfo where user_name = '".$username."'";
-    $result = $conn->query($query);
-    if(!$result){
-        throw new Exception('Could not execute query.');
-    }
-    if($result->num_rows == 0){
-        throw new Exception('No member named '.$username);
-    }
+    $result = get_use_info($username);
     $row = $result->fetch_assoc();
 ?>
-
 
     <!--头像-->
 
@@ -30,17 +21,17 @@ function display_info($username) {
     echo "<br />";
 
     echo $username."创建的主题<br />";
-    display_topic($conn,$row[user_id],$username);
+    display_topic($row[user_id],$username);
 
     echo "<br />";
 
     echo $username."最近回复了<br />";
     display_reply($row[user_id]);
 
-    $conn->close();
 }
 
-function display_topic($conn, $userid, $username) {
+function display_topic($userid, $username) {
+    $conn = db_connect();
     $query = "select * from aritle, aritle_info, node where aritle.aritle_id=aritle_info.aritle_id and aritle.author_id=".$userid.
         " and aritle_info.node_id=node.node_id limit 10";
     $result = $conn->query($query);
@@ -55,6 +46,7 @@ function display_topic($conn, $userid, $username) {
             display_reply_num($row[aritle_id]);
         }
     }
+    $conn->close();
 }
 
 function display_reply_num($parent_id){
@@ -65,7 +57,7 @@ function display_reply_num($parent_id){
         throw new Exception('Could not execute query.');
     }
     if($result->num_rows>0){
-        echo $result->num_rows;
+        echo "<span>".$result->num_rows."</span>";
     }
     $conn->close();
 }
@@ -91,13 +83,26 @@ function display_reply($userid) {
 function display_user_topic($aritle_id){
     $conn = db_connect();
     $query = "select title, user_name from aritle_info,userinfo,aritle where userinfo.user_id=aritle.author_id and ".
-        "aritle.aritle_id=aritle_info.aritle_id and aritle_id=".$aritle_id;
+        "aritle.aritle_id=aritle_info.aritle_id and aritle.aritle_id=".$aritle_id;
     $result = $conn->query($query);
     if(!$result){
         throw new Exception('Could not execute query.');
     }
     $row = $result->fetch_assoc();
-    echo "回复了".$row[user_name]."创建的主题 >".$row[title];
+    echo "<span>回复了".$row[user_name]."创建的主题 >".$row[title]."</span>";
     echo "<br />";
     $conn->close();
+}
+
+function get_use_info($username) {
+    $conn = db_connect();
+    $query = "select user_id, user_name, reg_time from userinfo where user_name = '".$username."'";
+    $result = $conn->query($query);
+    if(!$result){
+        throw new Exception('Could not execute query.');
+    }
+    if($result->num_rows == 0){
+        throw new Exception('404: Not Found');
+    }
+    return $result;
 }

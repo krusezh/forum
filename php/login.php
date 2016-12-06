@@ -9,31 +9,55 @@ header("Content-type:text/html;charset=utf-8");
 require_once ('functions.php');
 session_start();
 
+display_head('登录');
+display_top();
+
 $username = $_POST['username'];
 $userpwd = $_POST['password'];
 
 if ($username && $userpwd) {
     try {
-        login($username, $userpwd);
+        display_wrapper('login',$username,$userpwd);
         $_SESSION['valid_user'] = $username;
     }
     catch (Exception $e) {
         echo $e->getMessage();
         exit;
     }
+    display_buttom();
+    $url = "../index.php";
+    echo "<script type='text/javascript'>";
+    echo "window.location.href='$url'";
+    echo "</script>";
+    exit;
 }
 
-check_valid_user();
-?>
-<html>
-<body>
-    <form action="profile.php" method="post">
-        <table>
+if(check_valid_user()){
+    echo "You have already logged in.";
+}
+else {
+    ?>
+    <form action="login.php" method="post">
+        <table border="0">
             <tr>
-                <td><input type="text" name="username" value="<?php echo $_SESSION['valid_user']?>" /></td>
-                <td><input type="submit" value="submit" /></td>
+                <td>用户名</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="username"/></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+            </tr>
+            <tr>
+                <td><input type="password" name="password"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="登录"/></td>
             </tr>
         </table>
     </form>
-</body>
-</html>
+<?php
+}
+display_buttom();
+?>
+
