@@ -13,7 +13,7 @@ session_start();
     <div>
         <span>创建新主题</span>
     </div>
-    <form action="publish_aritle.php" method="post">
+    <form action="publish_article.php" method="post">
         <div>
             主题标题
         </div>

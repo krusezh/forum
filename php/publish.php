@@ -6,7 +6,7 @@
  * Time: 下午6:14
  */
 
-function publish_aritle($date) {
+function publish_article($date) {
     $title = $date['title'];
     $node = $date['node'];
     $content = $date['content'];
@@ -18,22 +18,22 @@ function publish_aritle($date) {
     $userid = $row['user_id'];
 
     $conn = db_connect();
-    $query = "insert into aritle values (NULL,0,$userid,'$date')";
+    $query = "insert into article values (NULL,0,$userid,'$date')";
     $result = $conn->query($query);
     if(!$result) {
-        throw new Exception('Could not publish your aritle1.');
+        throw new Exception('Could not publish your article1.');
     }
 
-    $query = "insert into aritle_info values (NULL,'$title',0,$node)";
+    $query = "insert into article_info values (NULL,'$title',0,$node)";
     $result = $conn->query($query);
     if(!$result) {
-        throw new Exception('Could not publish your aritle2.');
+        throw new Exception('Could not publish your article2.');
     }
 
-    $query = "insert into aritle_content values (NULL,'$content')";
+    $query = "insert into article_content values (NULL,'$content')";
     $result = $conn->query($query);
     if(!$result) {
-        throw new Exception('Could not publish your aritle3.');
+        throw new Exception('Could not publish your article3.');
     }
 
     $conn->close();

@@ -16,7 +16,7 @@ try {
     if(!filled_out($_POST)){
         throw new Exception('You have not filled the form out correctly - please go back and try again.');
     }
-    publish_aritle($_POST);
+    publish_article($_POST);
 }
 catch (Exception $e){
     echo $e->getMessage();

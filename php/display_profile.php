@@ -32,18 +32,18 @@ function display_info($username) {
 
 function display_topic($userid, $username) {
     $conn = db_connect();
-    $query = "select * from aritle, aritle_info, node where aritle.aritle_id=aritle_info.aritle_id and aritle.author_id=".$userid.
-        " and aritle_info.node_id=node.node_id limit 10";
+    $query = "select * from article, article_info, node where article.article_id=article_info.article_id and article.author_id=".$userid.
+        " and article_info.node_id=node.node_id limit 10";
     $result = $conn->query($query);
     if(!$result) {
         throw new Exception('Could not execute query.');
     }
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()){
-            echo "<span>".$row[title]."</span>";
+            echo "<span>$row[title]</span>";
             echo "<br />";
-            echo "<span>".$row[node_name]." ".$username." ".$row[post_time]."</span>";
-            display_reply_num($row[aritle_id]);
+            echo "<span>$row[node_name] $username $row[post_time]</span>";
+            display_reply_num($row[article_id]);
         }
     }
     $conn->close();
@@ -51,7 +51,7 @@ function display_topic($userid, $username) {
 
 function display_reply_num($parent_id){
     $conn = db_connect();
-    $query = "select * from aritle a1, aritle a2 where a1.aritle_id=a2.parent_id and a1.aritle_id=".$parent_id;
+    $query = "select * from article a1, article a2 where a1.article_id=a2.parent_id and a1.article_id=".$parent_id;
     $result = $conn->query($query);
     if(!$result) {
         throw new Exception('Could not execute query.');
@@ -64,7 +64,7 @@ function display_reply_num($parent_id){
 
 function display_reply($userid) {
     $conn = db_connect();
-    $query = "select * from aritle,aritle_content where parent_id<>0 and aritle.aritle_id=aritle_content.aritle_id and author_id=".$userid." limit 10";
+    $query = "select * from article,article_content where parent_id<>0 and article.article_id=article_content.article_id and author_id=".$userid." limit 10";
     $result = $conn->query($query);
 
     if(!$result){
@@ -73,17 +73,17 @@ function display_reply($userid) {
     if($result->num_rows>0){
         while($row=$result->fetch_assoc()){
             display_user_topic($row[parent_id]);
-            echo $row[aritle_content];
+            echo $row[article_content];
             echo "<br />";
         }
     }
     $conn->close();
 }
 
-function display_user_topic($aritle_id){
+function display_user_topic($article_id){
     $conn = db_connect();
-    $query = "select title, user_name from aritle_info,userinfo,aritle where userinfo.user_id=aritle.author_id and ".
-        "aritle.aritle_id=aritle_info.aritle_id and aritle.aritle_id=".$aritle_id;
+    $query = "select title, user_name from article_info,userinfo,article where userinfo.user_id=article.author_id and ".
+        "article.article_id=article_info.article_id and article.article_id=".$article_id;
     $result = $conn->query($query);
     if(!$result){
         throw new Exception('Could not execute query.');

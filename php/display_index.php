@@ -6,10 +6,11 @@
  * Time: 下午2:39
  */
 
-function display_index($nodeid=1) {
-    if(isset($_REQUEST['nodeid'])) {
-        if(is_numeric($_REQUEST['nodeid']) && $_REQUEST['nodeid']<=10) {
-            $nodeid = $_REQUEST['nodeid'];
+function display_index($tabname='技术') {
+    $tab=array('技术','创意','好玩','Apple','酷工作','交易','城市','问与答','最热','全部');
+    if(isset($_REQUEST['tab'])) {
+        if(in_array($tabname,$tab)) {
+            $tabname = $_REQUEST['tab'];
         }
         else {
             throw new Exception('404: Not Found');
@@ -17,47 +18,38 @@ function display_index($nodeid=1) {
     }
 ?>
     <div>
-        <!--节点-->
+        <!--标签-->
         <?php
-        display_node();
+        echo "<a href='http://localhost/phpstorm/forum/index.php?tab=$tab[0]'>$tab[0]</a>";
+        for($i=1; $i<10; $i++) {
+            echo "&nbsp";
+            echo "<a href='http://localhost/phpstorm/forum/index.php?tab=$tab[$i]'>$tab[$i]</a>";
+        }
         ?>
     </div>
     <div>
-        <!--子节点-->
+        <!--节点-->
         <?php
-        display_son_node($nodeid);
+        display_node($tabname);
         ?>
     </div>
 <?php
-    display_title($nodeid);
+    display_title($tabname);
 }
 
-function display_node(){
+function display_node($tabname) {
     $conn = db_connect();
-    $query = "select * from node limit 10";
-    $result = $conn->query($query);
-
-    if(!$result) {
-        throw new Exception('Could not execute query1.');
-    }
-    if($result->num_rows>0){
-        while ($row=$result->fetch_assoc()) {
-            echo "<a href='http://localhost/phpstorm/forum/index.php?nodeid=$row[node_id]'>$row[node_name]</a>";
-        }
-    }
-    $conn->close();
-}
-
-function display_son_node($nodeid) {
-    $conn = db_connect();
-    $query = "select * from node, node_related where node.node_id=node_related.son_node_id and node_related.parent_node_id=$nodeid";
+    $query = "select * from tab,node where tab.tab_name='$tabname' and tab.node_id=node.node_id";
     $result = $conn->query($query);
     if(!$result) {
         throw new Exception('Could not execute query2.');
     }
     if($result->num_rows>0) {
+        $row=$result->fetch_assoc();
+        echo "<a href='display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
         while($row=$result->fetch_assoc()) {
-            echo "<a href='display_node.php?nodeid=$row[node_id]'>$row[node_name]</a>";
+            echo "&nbsp";
+            echo "<a href='display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
         }
     }
     $conn->close();
@@ -67,10 +59,10 @@ function display_specific_node($nodeid) {
 
 }
 
-function display_title($nodeid) {
+function display_title($tabname) {
     $conn = db_connect();
-    $query = "select user_id,user_name,aritle.aritle_id,post_time,title from userinfo,aritle,aritle_info where userinfo.user_id=aritle.author_id and ".
-            "aritle.aritle_id=aritle_info.aritle_id and aritle.parent_id=0 and aritle_info.node_id=$nodeid limit 50";
+    $query = "select title,node_name,user_name,article.article_id from userinfo,article,article_info,node where article.author_id=userinfo.user_id and article.article_id=article_info.article_id ".
+            "and article_info.node_id=node.node_id and node.node_id in (select node_id from tab where tab_name='$tabname')";
     $result = $conn->query($query);
 
     if(!$result) {
@@ -78,10 +70,10 @@ function display_title($nodeid) {
     }
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()) {
-            echo "<span>".$row[title]."</span>";
+            echo "<span><a href=''>$row[title]</a></span>";
             echo "<br />";
-            echo "<span>".$row[node_name]." ".$row[user_name]." ".$row[post_time]."</span>";
-            display_reply_num($row[aritle_id]);
+            echo "<span><a href=''>$row[node_name]</a> <a href='./php/profile.php?username=$row[user_name]'>$row[user_name]</a> $row[post_time]</span>";
+            display_reply_num($row[article_id]);
         }
     }
     $conn->close();
