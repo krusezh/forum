@@ -39,4 +39,10 @@ mysql_query(mb_convet_encoding("insert into my_table values('测试');","utf-8",
 ```sql
 create table my_table ( name varchar(20) binary not null default '')type=myisam default charset latin1;
 ```    
-自此,使用utf8字符集的完整的例子结束了。 
+自此,使用utf8字符集的完整的例子结束了。    
+
+* 在用sql脚本对数据库进行操作时，在sql脚本最开始添加下面这句，以防乱码    
+
+```sql
+SET NAMES utf8;
+``` 
