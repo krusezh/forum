@@ -70,10 +70,12 @@ function display_title($tabname) {
     }
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()) {
-            echo "<span><a href=''>$row[title]</a></span>";
+            echo "<div>";
+            echo "<span><a href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
             echo "<br />";
             echo "<span><a href=''>$row[node_name]</a> <a href='./php/profile.php?username=$row[user_name]'>$row[user_name]</a> $row[post_time]</span>";
             display_reply_num($row[article_id]);
+            echo "</div>";
         }
     }
     $conn->close();

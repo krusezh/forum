@@ -39,3 +39,6 @@ function publish_article($date) {
     $conn->close();
 }
 
+function publish_reply() {
+
+}

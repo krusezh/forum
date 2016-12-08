@@ -12,3 +12,5 @@ require_once ('display_profile.php');
 require_once ('display_html.php');
 require_once ('publish.php');
 require_once ('display_index.php');
+require_once ('display_article.php');
+require_once ('Parsedown.php');

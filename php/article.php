@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: dim
- * Date: 2016/12/2
- * Time: 下午9:34
+ * Date: 2016/12/7
+ * Time: 下午10:11
  */
 header("Content-type:text/html;charset=utf-8");
 require_once ('functions.php');
@@ -11,15 +11,18 @@ session_start();
 ob_start();
 
 $username = $_REQUEST['username'];
+$articleid = $_REQUEST['articleid'];
+settype($articleid,'integer');
 
 try {
-    if(!$username) {
-        throw new Exception('404: Not Found1');
+    if(!$username || !$articleid) {
+        throw new Exception('404: Not Found');
     }
     else {
-        display_head($username);
+        $title = get_title($articleid);
+        display_head($title);
         display_top();
-        display_wrapper('profile',$username);
+        display_wrapper('article',$username,'none',$articleid);
         display_buttom();
     }
 }
@@ -29,6 +32,3 @@ catch (Exception $e) {
     echo $e->getMessage();
     exit;
 }
-
-
-

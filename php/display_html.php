@@ -29,6 +29,7 @@ function display_top($place='') {
             $username = $_SESSION['valid_user'];
             ?>
             <span><a href="<?php echo $place;?>profile.php?username=<?php echo $username;?>"><?php echo $username;?></a></span>
+            <span><a href="<?php echo $place;?>write_article.php">创建新主题</a></span>
             <span><a href="<?php echo $place;?>logout.php">登出</a></span>
             <?php
         }
@@ -43,18 +44,18 @@ function display_top($place='') {
 <?php
 }
 
-function display_wrapper($flag,$username='none',$password='none') {
+function display_wrapper($flag,$username='none',$password='none',$articelid=0) {
 ?>
     <div>
         <?php
         display_right_bar();
-        display_main($flag,$username,$password);
+        display_main($flag,$username,$password,$articelid);
         ?>
     </div>
 <?php
 }
 
-function display_main($flag, $username='none', $password='none') {
+function display_main($flag, $username, $password,$articleid) {
 ?>
     <div>
         <?php
@@ -72,6 +73,9 @@ function display_main($flag, $username='none', $password='none') {
         }
         elseif($flag==='register'){
             register($username,$password);
+        }
+        elseif($flag==='article'){
+            display_article($username,$articleid);
         }
         ?>
     </div>
