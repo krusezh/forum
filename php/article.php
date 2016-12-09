@@ -6,12 +6,32 @@
  * Time: 下午10:11
  */
 header("Content-type:text/html;charset=utf-8");
+date_default_timezone_set("Etc/GMT-8");
 require_once ('functions.php');
 session_start();
 ob_start();
 
-$username = $_REQUEST['username'];
-$articleid = $_REQUEST['articleid'];
+if($_POST['replycontent'] && $_POST['articleid'] &$_POST['once']){
+    if($_SESSION['once'] == $_POST['once']) {
+        try {
+            publish_reply($_POST);
+        }
+        catch (Exception $e) {
+            ob_end_clean();
+            display_head($e->getMessage());
+            echo $e->getMessage();
+            exit;
+        }
+    }
+    else {
+        display_head('请不要刷新本页面或重复提交表单！');
+        echo "请不要刷新本页面或重复提交表单！";
+        exit;
+    }
+}
+
+$username = $_GET['username'];
+$articleid = $_GET['articleid'];
 settype($articleid,'integer');
 
 try {
@@ -32,3 +52,5 @@ catch (Exception $e) {
     echo $e->getMessage();
     exit;
 }
+?>
+

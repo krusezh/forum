@@ -26,7 +26,7 @@ create table article_info(
 
 create table article_content(
 	article_id int unsigned not null auto_increment primary key,
-	article_content text not null
+	article_content TEXT not null
 );
 
 create table tab(
@@ -45,7 +45,7 @@ create table node_related(
 	son_node_id int unsigned not null
 );
 
-grant select,insert,update
+grant select,insert,update,delete
 	on forumdatabase.*
 	to registeruser identified by '1234567890,.?';
 
