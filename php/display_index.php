@@ -42,7 +42,7 @@ function display_node($tabname) {
     $query = "select * from tab,node where tab.tab_name='$tabname' and tab.node_id=node.node_id";
     $result = $conn->query($query);
     if(!$result) {
-        throw new Exception('Could not execute query2.');
+        throw new Exception('Could not execute query3.');
     }
     if($result->num_rows>0) {
         $row=$result->fetch_assoc();
