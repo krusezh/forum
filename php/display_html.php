@@ -66,7 +66,7 @@ function display_wrapper($flag,$username='none',$password='none',$articelid=0,$e
 
 function display_main($flag, $username, $password,$articleid,$email) {
 ?>
-    <div>
+    <div class="content-main">
         <?php
         if($flag==='profile'){
             display_info($username);
@@ -93,7 +93,7 @@ function display_main($flag, $username, $password,$articleid,$email) {
 
 function display_right_bar() {
     ?>
-    <div>
+    <div class="content-right">
 
     </div>
     <?php
