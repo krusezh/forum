@@ -25,6 +25,7 @@ function display_head($title) {
 function display_top($place='') {
 ?>
     <div class="header">
+        <div class="header-logo">FORUM</div>
         <div>
             <span><a href="http://localhost/phpstorm/forum/">首页</a></span>
             <?php
