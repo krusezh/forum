@@ -33,3 +33,6 @@
     width: 300px;
     line-height: 44px;
 }
+.header-nav >span {
+	margin: 0 10px;
+}
