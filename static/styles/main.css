@@ -16,9 +16,20 @@
     padding: 0px 20px;
 }
 .header-logo {
+	float: left;
 	font-size: 30px;
-	font-weight: bold;
-	padding-left: 25px;
-	height: 44px;
+    font-weight: bold;
+    padding-left: 100px;
+    height: 44px;
+    width: 250px;
+    line-height: 44px;
+}
+.header-nav {
+	float: right;
+	padding-right: 100px;
+	font-size: 16px;
+    font-weight: 400;
+    height: 44px;
+    width: 300px;
     line-height: 44px;
 }

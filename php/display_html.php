@@ -24,9 +24,9 @@ function display_head($title) {
 
 function display_top($place='') {
 ?>
-    <div class="header">
+    <div class="header wrapper clearfix">
         <div class="header-logo">FORUM</div>
-        <div>
+        <div class="header-nav">
             <span><a href="http://localhost/phpstorm/forum/">首页</a></span>
             <?php
             if(check_valid_user()) {
