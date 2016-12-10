@@ -17,17 +17,17 @@ function display_index($tabname='技术') {
         }
     }
 ?>
-    <div>
+    <div class="inner">
         <!--标签-->
         <?php
-        echo "<a href='http://localhost/phpstorm/forum/index.php?tab=$tab[0]'>$tab[0]</a>";
+        echo "<a class='tab_current' href='http://localhost/phpstorm/forum/index.php?tab=$tab[0]'>$tab[0]</a>";
         for($i=1; $i<10; $i++) {
             echo "&nbsp";
-            echo "<a href='http://localhost/phpstorm/forum/index.php?tab=$tab[$i]'>$tab[$i]</a>";
+            echo "<a class='tab' href='http://localhost/phpstorm/forum/index.php?tab=$tab[$i]'>$tab[$i]</a>";
         }
         ?>
     </div>
-    <div>
+    <div class="cell">
         <!--节点-->
         <?php
         display_node($tabname);
@@ -70,10 +70,10 @@ function display_title($tabname) {
     }
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()) {
-            echo "<div>";
-            echo "<span><a href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
+            echo "<div class='cell item'>";
+            echo "<span><a style='font-size:14px;' href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
             echo "<br />";
-            echo "<span><a href=''>$row[node_name]</a> <a href='./php/profile.php?username=$row[user_name]'>$row[user_name]</a> $row[post_time]</span>";
+            echo "<span><a class='node' href=''>$row[node_name]</a> &nbsp;•&nbsp; <a class='strong' href='./php/profile.php?username=$row[user_name]'>$row[user_name]</a>$row[post_time]</span>";
             display_reply_num($row[article_id]);
             echo "</div>";
         }
