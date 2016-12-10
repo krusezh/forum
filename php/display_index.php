@@ -61,7 +61,7 @@ function display_specific_node($nodeid) {
 
 function display_title($tabname) {
     $conn = db_connect();
-    $query = "select title,node_name,user_name,article.article_id from userinfo,article,article_info,node where article.author_id=userinfo.user_id and article.article_id=article_info.article_id ".
+    $query = "select * from userinfo,article,article_info,node where article.author_id=userinfo.user_id and article.article_id=article_info.article_id ".
             "and article_info.node_id=node.node_id and node.node_id in (select node_id from tab where tab_name='$tabname')";
     $result = $conn->query($query);
 
