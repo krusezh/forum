@@ -6,7 +6,7 @@
  * Time: 下午10:26
  */
 
-function register($username, $password){
+function register($username, $password,$email){
     $password = password_hash($password, PASSWORD_DEFAULT);
     $date = date("Y-m-d H:i:s");
     $conn = db_connect();
@@ -18,19 +18,19 @@ function register($username, $password){
         throw new Exception('That username is taken - go back and choose another one.');
     }
 
-    $query = "insert into userinfo values (NULL,'".$username."','".$password."','".$date."')";
+    $query = "insert into userinfo values (NULL,'$username','$password','$email','$date')";
     $result = $conn->query($query);
 
     if(!$result){
         throw new Exception('Could not register you in database - please try again later.');
     }
 
-    echo 'Your registeration was successful. Go to the members page to start setting up your profile!';
     $conn->close();
     return ture;
 }
 
 function login($username, $password) {
+    $username = stripslashes(trim($username));
     $conn = db_connect();
     $result = $conn->query("select * from userinfo where user_name='".$username."'");
     if(!$result) {

@@ -10,11 +10,9 @@ function display_info($username) {
     $result = get_use_info($username);
     $row = $result->fetch_assoc();
 ?>
-
     <!--头像-->
-
-
 <?php
+    display_image('krusezh@gmail.com');
     echo "<span>".$username."</span>";
     echo "<br />";
     echo "<span>论坛第".$row[user_id]."号会员，加入于".$row[reg_time]."</span>";

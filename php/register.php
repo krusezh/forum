@@ -13,9 +13,11 @@ session_start();
 display_head('注册');
 display_top();
 
-$username = $_POST['username'];
-$userpwd = $_POST['password'];
-if($username && $userpwd) {
+$username = stripslashes(trim($_POST['username']));
+$userpwd = trim($_POST['password']);
+$email = trim($_POST['email']);
+
+if($username && $userpwd && $email) {
     try{
         if(!filled_out($_POST)){
             throw new Exception('You have not filled the form out correctly - please go back and try again.');
@@ -23,15 +25,23 @@ if($username && $userpwd) {
         if((strlen($userpwd) < 8) || (strlen($userpwd) > 20)){
             throw new Exception('Your password must be between 8 and 20 characters. Please go back and try again.');
         }
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
+            throw new Exception('Wrong e-mail format.');
+        }
 
         display_wrapper('register',$username,$userpwd);
         $_SESSION['valid_user'] = $username;
+
     }
     catch (Exception $e){
         echo $e->getMessage();
         exit;
     }
     display_buttom();
+    $url = "../index.php";
+    echo "<script type='text/javascript'>";
+    echo "window.location.href='$url'";
+    echo "</script>";
     exit;
 }
 ?>
@@ -43,6 +53,10 @@ if($username && $userpwd) {
     <span>密码</span>
     <br />
     <span><input type="password" name="password" /></span>
+    <br />
+    <span>电子邮件</span>
+    <br />
+    <span><input type="text" name="email"></span>
     <br />
     <span><input type="submit" value="注册" /></span>
 </form>

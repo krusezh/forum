@@ -14,3 +14,4 @@ require_once ('publish.php');
 require_once ('display_index.php');
 require_once ('display_article.php');
 require_once ('Parsedown.php');
+require_once ('display_image.php');

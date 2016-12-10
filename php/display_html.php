@@ -44,18 +44,18 @@ function display_top($place='') {
 <?php
 }
 
-function display_wrapper($flag,$username='none',$password='none',$articelid=0) {
+function display_wrapper($flag,$username='none',$password='none',$articelid=0,$email='none') {
 ?>
     <div>
         <?php
         display_right_bar();
-        display_main($flag,$username,$password,$articelid);
+        display_main($flag,$username,$password,$articelid,$email);
         ?>
     </div>
 <?php
 }
 
-function display_main($flag, $username, $password,$articleid) {
+function display_main($flag, $username, $password,$articleid,$email) {
 ?>
     <div>
         <?php
@@ -72,7 +72,7 @@ function display_main($flag, $username, $password,$articleid) {
             login($username,$password);
         }
         elseif($flag==='register'){
-            register($username,$password);
+            register($username,$password,$email);
         }
         elseif($flag==='article'){
             display_article($username,$articleid);

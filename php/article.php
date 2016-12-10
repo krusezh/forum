@@ -11,7 +11,7 @@ require_once ('functions.php');
 session_start();
 ob_start();
 
-if($_POST['replycontent'] && $_POST['articleid'] &$_POST['once']){
+if($_POST['replycontent'] && $_POST['articleid'] && $_POST['once']){
     if($_SESSION['once'] == $_POST['once']) {
         try {
             publish_reply($_POST);

@@ -7,6 +7,9 @@ create table userinfo(
 	user_id int unsigned not null auto_increment primary key,
 	user_name char(50) not null,
 	password char(255) not null,
+	e_mail char(30) not null,
+	active_code char(50) not null,
+	active_status tinyint(1) not null defautl 0,
 	reg_time datetime not null
 );
 
