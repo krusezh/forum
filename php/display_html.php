@@ -54,7 +54,7 @@ function display_top($place='') {
 function display_wrapper($flag,$username='none',$password='none',$articelid=0,$email='none') {
 ?>
     <div class="content">
-        <div class="wrapper">
+        <div class="wrapper clearfix">
             <?php
             display_right_bar();
             display_main($flag,$username,$password,$articelid,$email);

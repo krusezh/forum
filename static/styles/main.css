@@ -43,15 +43,16 @@
     background-color: #e2e2e2;
     background-image: url(../images/shadow_light.png);
     background-repeat: repeat-x;
-    margin-top: 20px;
 }
 .content-main {
+    margin-top: 20px;
 	float: left;
 	width: 770px;
 	min-height: 200px;
 	background-color: #fff;
 }
 .content-right {
+	margin-top: 20px;
 	float: right;
 	width: 270px;
 	height: 254px;
