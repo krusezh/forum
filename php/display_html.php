@@ -13,8 +13,8 @@ function display_head($title) {
     <head>
         <meta charset="UTF-8">
         <title><?php echo $title;?></title>
-        <link rel="stylesheet" href="./../static/styles/reset.css">
-        <link rel="stylesheet" href="./../static/styles/main.css">
+        <link rel="stylesheet" href="./static/styles/reset.css">
+        <link rel="stylesheet" href="./static/styles/main.css">
     </head>
     <body>
     </body>
