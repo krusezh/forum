@@ -26,7 +26,7 @@ function display_top($place='') {
 ?>
     <div class="header">
         <div>
-            <span><a href="http://localhost/phpstorm/forum/">首页</a></span>
+            <span><a href="forum/">首页</a></span>
             <?php
             if(check_valid_user()) {
                 $username = $_SESSION['valid_user'];
