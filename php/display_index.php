@@ -71,9 +71,9 @@ function display_title($tabname) {
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()) {
             echo "<div class='cell item'>";
-            echo "<span><a style='font-size:14px;' href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
+            echo "<span><a style='font-size:18px;line-height:35px;' href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
             echo "<br />";
-            echo "<span><a class='node' href=''>$row[node_name]</a> &nbsp;•&nbsp; <a class='strong' href='./php/profile.php?username=$row[user_name]'>$row[user_name]</a>$row[post_time]</span>";
+            echo "<span><a class='node' href=''>$row[node_name]</a><a class='strong' href='./php/profile.php?username=$row[user_name]'> &nbsp;•&nbsp; $row[user_name]&nbsp;</a>发表于&nbsp;&nbsp;$row[post_time]</span>&nbsp;&nbsp;&nbsp;&nbsp;回复数：";
             display_reply_num($row[article_id]);
             echo "</div>";
         }
