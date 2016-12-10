@@ -6,15 +6,15 @@
  * Time: 下午4:01
  */
 
-function display_head($title) {
+function display_head($title,$place='..') {
 ?>
     <!DOCTYPE html>
     <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
         <title><?php echo $title;?></title>
-        <link rel="stylesheet" href="./static/styles/reset.css">
-        <link rel="stylesheet" href="./static/styles/main.css">
+        <link rel="stylesheet" href="<?php echo $place?>/static/styles/reset.css">
+        <link rel="stylesheet" href="<?php echo $place?>/static/styles/main.css">
     </head>
     <body>
     </body>

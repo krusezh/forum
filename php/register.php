@@ -29,7 +29,7 @@ if($username && $userpwd && $email) {
             throw new Exception('Wrong e-mail format.');
         }
 
-        display_wrapper('register',$username,$userpwd);
+        display_wrapper('register',$username,$userpwd,0,$email);
         $_SESSION['valid_user'] = $username;
 
     }

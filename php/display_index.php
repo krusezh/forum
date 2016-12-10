@@ -20,10 +20,10 @@ function display_index($tabname='技术') {
     <div class="inner">
         <!--标签-->
         <?php
-        echo "<a class='tab_current' href='http://localhost/phpstorm/forum/index.php?tab=$tab[0]'>$tab[0]</a>";
+        echo "<a class='tab_current' href='../forum/index.php?tab=$tab[0]'>$tab[0]</a>";
         for($i=1; $i<10; $i++) {
             echo "&nbsp";
-            echo "<a class='tab' href='http://localhost/phpstorm/forum/index.php?tab=$tab[$i]'>$tab[$i]</a>";
+            echo "<a class='tab' href='../forum/index.php?tab=$tab[$i]'>$tab[$i]</a>";
         }
         ?>
     </div>
@@ -49,7 +49,7 @@ function display_node($tabname) {
         echo "<a href='display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
         while($row=$result->fetch_assoc()) {
             echo "&nbsp";
-            echo "<a href='display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
+            echo "<a href='./php/display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
         }
     }
     $conn->close();

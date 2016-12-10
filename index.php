@@ -5,7 +5,7 @@ session_start();
 ob_start();
 
 try {
-    display_head("我的论坛");
+    display_head("FORUM",'.');
     display_top('./php/');
     display_wrapper('index');
     display_buttom();
