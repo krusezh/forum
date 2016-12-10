@@ -53,8 +53,8 @@ function display_top($place='') {
 
 function display_wrapper($flag,$username='none',$password='none',$articelid=0,$email='none') {
 ?>
-    <div>
-        <div class="wrapper content">
+    <div class="content">
+        <div class="wrapper">
             <?php
             display_right_bar();
             display_main($flag,$username,$password,$articelid,$email);
