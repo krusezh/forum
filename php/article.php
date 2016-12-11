@@ -36,7 +36,7 @@ settype($articleid,'integer');
 
 try {
     if(!$username || !$articleid) {
-        throw new Exception('404: Not Found');
+        throw new Exception('404: Not Found7');
     }
     else {
         $title = get_title($articleid);

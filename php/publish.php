@@ -53,7 +53,10 @@ function publish_article($data) {
         $conn->query($delarticle_info);
         throw new Exception('Could not publish your article3.');
     }
-
+    $url = "../index.php";
+    echo "<script type='text/javascript'>";
+    echo "window.location.href='$url'";
+    echo "</script>";
     $conn->close();
 }
 
@@ -63,6 +66,10 @@ function publish_reply($data) {
     settype($article_id,'integer');
     $date = date("Y-m-d H:i:s");
     $username = $_SESSION['valid_user'];
+
+    if(!check_valid_user()) {
+        throw new Exception('登录后才能评论');
+    }
 
     $result = get_use_info($username);
     $row = $result->fetch_assoc();

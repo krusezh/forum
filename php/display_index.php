@@ -70,6 +70,9 @@ function display_title($tabname) {
     }
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()) {
+            echo "<div><a href='./php/profile.php?username=$row[user_name]'>";
+            display_image($row[e_mail],48);
+            echo "</a></div>";
             echo "<div class='cell item'>";
             echo "<span><a style='font-size:18px;line-height:35px;' href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
             echo "<br />";

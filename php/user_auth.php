@@ -9,9 +9,9 @@
 function register($username, $password, $email){
     $password = password_hash($password, PASSWORD_DEFAULT);
     $date = date("Y-m-d H:i:s");
-    $active_code = password_hash($username.$date,PASSWORD_DEFAULT);
+    //$active_code = password_hash($username.$date,PASSWORD_DEFAULT);
 
-    active_account_email($username,$email,$active_code);
+    //active_account_email($username,$email,$active_code);
 
     $conn = db_connect();
     $result = $conn->query("select * from userinfo where user_name='".$username."'");
@@ -22,11 +22,11 @@ function register($username, $password, $email){
         throw new Exception('That username is taken - go back and choose another one.');
     }
 
-    $query = "insert into userinfo values (NULL,'$username','$password','$email',0,'$date')";
+    $query = "insert into userinfo values (NULL,'$username','$password','$email','$date',0)";
     $result = $conn->query($query);
 
     if(!$result){
-        throw new Exception('Could not register you in database - please try again later.');
+        throw new Exception('Could not register you in database1 - please try again later.');
     }
 
     $conn->close();

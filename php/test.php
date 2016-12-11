@@ -8,4 +8,4 @@
 
 require_once ('functions.php');
 
-active_account_email('zhangxiwei','proape@126.com');
+active_account_email();

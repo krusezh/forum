@@ -6,23 +6,31 @@
  * Time: 下午2:26
  */
 
-function active_account_email($username,$email) {
+function active_account_email() {
     require_once ('../vendor/autoload.php');
+    //echo (extension_loaded('openssl')?'SSL loaded':'SSL not loaded');
     $mail = new PHPMailer();
 
     $mail->isSMTP();
-    $mail->Host = "smtp.126.com";
+    $mail->Host = "tls://smtp.qq.com:587";
     $mail->SMTPAuth = true;
-    $mail->Username = "redfolder@126.com";
+    $mail->Username = "712656311@qq.com";
     $mail->Password = "159357oIl";
-    $mail->SMTPSecure = "tls";
-    $mail->Port = 587;
+    //$mail->SMTPSecure = "ssl";
+    //$mail->Port = 465;
 
-    $mail->setFrom("redfolder@126.com","redfolder");
-    $mail->addAddress($email,$username);
+    $mail->setFrom("712656311@qq.com","712656311");
+    $mail->addAddress('1738800357@qq.com','zhangxiwei');
 
     $mail->CharSet = "UTF-8";
     $mail->SMTPDebug = 2;
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
 
     $mail->isHTML(true);
 

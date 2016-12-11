@@ -6,8 +6,9 @@
  * Time: 上午9:39
  */
 
-function display_image($email,$default='retro') {
+function display_image($email,$size,$default='retro') {
     require_once ('Gravatar.php');
     $gravatar = new Gravatar($email,$default);
+    $gravatar->setSize($size);
     echo $gravatar->toHTML();
 }

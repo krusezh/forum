@@ -12,14 +12,20 @@ function display_article($username,$articleid) {
         "article.article_id=article_content.article_id and article_info.node_id=node.node_id and article.article_id=$articleid";
     $result = $conn->query($query);
     if(!$result) {
-        throw new Exception('404: Not Found');
+        throw new Exception('404: Not Found1');
     }
     if($result->num_rows>0) {
         $row = $result->fetch_assoc();
         if($row[parent_id]!=0) {
-            throw new Exception('404: Not Found');
+            throw new Exception('404: Not Found2');
         }
+        $user_result = get_use_info($username);
+        $user_row = $user_result->fetch_assoc();
         ?>
+        <!--头像-->
+        <div>
+            <a href="profile.php?username=<?php echo $username?>"><?php display_image($user_row[e_mail],73);?></a>
+        </div>
         <!--标题-->
         <div>
             <a href=""><?php echo $row[node_name]?></a>
@@ -49,7 +55,7 @@ function get_title($articleid) {
     $query = "select * from article_info where article_id=$articleid";
     $result = $conn->query($query);
     if(!$result) {
-        throw new Exception('404: Not Found');
+        throw new Exception('404: Not Found3');
     }
     if($result->num_rows>0) {
         $row=$result->fetch_assoc();
@@ -57,7 +63,7 @@ function get_title($articleid) {
         return $row[title];
     }
     else {
-        throw new Exception('404: Not Found');
+        throw new Exception('404: Not Found4');
     }
 }
 
@@ -67,7 +73,7 @@ function display_reply_of_article($articleid) {
         "article.article_id=article_content.article_id and article.parent_id=$articleid";
     $result = $conn->query($query);
     if(!$result) {
-        throw new Exception('404: Not Found');
+        throw new Exception('404: Not Found5');
     }
     if($result->num_rows>0) {
         ?>
@@ -77,10 +83,15 @@ function display_reply_of_article($articleid) {
             </div>
             <?php
             while($row=$result->fetch_assoc()){
+                $user_result = get_use_info($row[user_name]);
+                $user_row = $user_result->fetch_assoc();
+                echo "<div>";
+                display_image($user_row[e_mail],48);
+                echo "</div>";
                 echo "<div>";
                     //回复者姓名
                     echo "<div>";
-                        echo "<strong><a href='profile.php?username=$row[username]'>$row[username]</a></strong>";
+                        echo "<strong><a href='profile.php?username=$row[username]'>$row[user_name]</a></strong>";
                         echo "&nbsp";
                         //回复时间
                         echo "<span>$row[post_time]</span>";
@@ -115,7 +126,7 @@ function display_reply_form($username,$articleid) {
     <div>
         <form method="post" action="article.php?username=<?php echo $username;?>&articleid=<?php echo $articleid;?>">
             <textarea name="replycontent"></textarea>
-            <input type="hidden" name="once" value="<?=$code?>">
+            <input type="hidden" name="once" value="<?php echo $code?>">
             <input type="hidden" name="articleid" value="<?php echo $articleid?>">
             <input type="submit" value="回复">
         </form>

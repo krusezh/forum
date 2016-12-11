@@ -8,10 +8,12 @@
 header("Content-type:text/html;charset=utf-8");
 require_once ('functions.php');
 session_start();
+display_head('创作新主题');
+display_top();
 ?>
 <div>
     <div>
-        <span>创建新主题</span>
+        <span>创作新主题</span>
     </div>
     <form action="publish_article.php" method="post">
         <div>
@@ -43,3 +45,4 @@ session_start();
 
 </div>
 <?php
+display_buttom();

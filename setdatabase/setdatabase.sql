@@ -8,8 +8,8 @@ create table userinfo(
 	user_name char(50) not null,
 	password char(255) not null,
 	e_mail char(30) not null,
-	active_status tinyint(1) not null default 0,
-	reg_time datetime not null
+	reg_time datetime not null,
+	active_status tinyint(1) not null default 0
 );
 
 create table article(
