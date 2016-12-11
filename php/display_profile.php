@@ -12,19 +12,22 @@ function display_info($username) {
 ?>
     <!--头像-->
 <?php
+    echo "<div class='user-photo'>";
     display_image($row[e_mail],73);
-    echo "<span>".$username."</span>";
+    echo "</div>";
+    echo "<span class='article-h1'>".$username."</span>";
     echo "<br />";
     echo "<span>论坛第".$row[user_id]."号会员，加入于".$row[reg_time]."</span>";
     echo "<br />";
-
+    echo "<div style='font-size:14px;'>";
     echo $username."创建的主题<br />";
     display_topic($row[user_id],$username);
 
-    echo "<br />";
-
+    echo "</div><br />";
+    echo "<div >";
     echo $username."最近回复了<br />";
     display_reply($row[user_id]);
+    echo "</div>";
 
 }
 
@@ -38,10 +41,10 @@ function display_topic($userid, $username) {
     }
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()){
-            echo "<div>";
-            echo "<span>$row[title]</span>";
+            echo "<div class='cell item'>";
+            echo "<span style='font-size:18px;line-height:35px;'>$row[title]</span>";
             echo "<br />";
-            echo "<span>$row[node_name] $username $row[post_time]</span>";
+            echo "<span><a class='node'>$row[node_name]</a> $username $row[post_time]</span>";
             display_reply_num($row[article_id]);
             echo "</div>";
         }
@@ -90,7 +93,7 @@ function display_user_topic($article_id){
     }
     $row = $result->fetch_assoc();
     echo "<span>回复了".$row[user_name]."创建的主题 >".$row[title]."</span>";
-    echo "<br />";
+    echo "<br/>";
     $conn->close();
 }
 

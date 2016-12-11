@@ -37,25 +37,25 @@ if(check_valid_user()){
 }
 else {
     ?>
-    <form action="login.php" method="post">
-        <table border="0">
-            <tr>
-                <td>用户名</td>
-            </tr>
-            <tr>
-                <td><input type="text" name="username"/></td>
-            </tr>
-            <tr>
-                <td>密码</td>
-            </tr>
-            <tr>
-                <td><input type="password" name="password"/></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="登录"/></td>
-            </tr>
-        </table>
-    </form>
+    <div class="wrapper" style="margin-top:25px;">
+    <div id="form_wrapper" class="form_wrapper" style="width: 350px; height: 330px;">
+                <form class="login active"  action="login.php" method="post">
+                    <h3><cufon class="cufon cufon-canvas" alt="Login" style="width: 73px; height: 25px;"><canvas width="84" height="28" style="width: 84px; height: 28px; top: -2px; left: 0px;"></canvas><cufontext>Login</cufontext></cufon></h3>
+                    <div>
+                        <label>Username:</label>
+                        <input name="username" type="text">
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="bottom">
+                        <input type="submit" value="登录">
+                        <div class="clear"></div>
+                    </div>
+                </form>
+        </div>
+    </div>
 <?php
 }
 display_buttom();
