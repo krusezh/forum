@@ -160,6 +160,7 @@ a.strong {
 .cell .reply {
     display: inline-block;
     margin-left: 30px;
+    border-bottom: none;
 }
 /*底部样式*/
 .footer {

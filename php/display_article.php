@@ -96,7 +96,7 @@ function display_reply_of_article($articleid) {
                         echo $Parsedown->text($row[article_content]);
                     echo "</div>";
                     //回复者姓名
-                    echo "<div style='font-size:14px'>";
+                    echo "<div style='font-size:14px;margin-top: 10px;'>";
                         echo "<strong><a href='profile.php?username=$row[username]'>$row[user_name]</a></strong>";
                         echo "&nbsp";
                         //回复时间
