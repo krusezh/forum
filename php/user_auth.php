@@ -11,7 +11,6 @@ function register($username, $password, $email){
     $date = date("Y-m-d H:i:s");
     $active_code = password_hash($username.$date,PASSWORD_DEFAULT);
     $active_time = time()+60*60*24;
-    send_email($email,$active_code);
 
     $conn = db_connect();
     $result = $conn->query("select * from userinfo where user_name='".$username."'");
@@ -28,6 +27,8 @@ function register($username, $password, $email){
     if(!$result){
         throw new Exception('Could not register you in database1 - please try again later.');
     }
+
+    send_email($email,$active_code);
 
     $conn->close();
     return true;

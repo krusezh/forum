@@ -9,6 +9,7 @@ create table userinfo(
 	password char(255) not null,
 	e_mail char(30) not null,
 	reg_time datetime not null,
+	active_time int not null,
 	active_status tinyint(1) not null default 0
 );
 
