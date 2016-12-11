@@ -46,7 +46,7 @@ function display_node($tabname) {
     }
     if($result->num_rows>0) {
         $row=$result->fetch_assoc();
-        echo "<a href='display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
+        echo "<a href='./php/display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
         while($row=$result->fetch_assoc()) {
             echo "&nbsp";
             echo "<a href='./php/display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
