@@ -45,22 +45,32 @@ if($username && $userpwd && $email) {
     exit;
 }
 ?>
-<form action="register.php" method="post">
-    <span>用户名</span>
-    <br />
-    <span><input type="text" name="username" /></span>
-    <br />
-    <span>密码</span>
-    <br />
-    <span><input type="password" name="password" /></span>
-    <br />
-    <span>电子邮件</span>
-    <br />
-    <span><input type="text" name="email"></span>
-    <br />
-    <span><input type="submit" value="注册" /></span>
-</form>
 
+<div class="wrapper">
+<div id="form_wrapper" class="form_wrapper" style="width: 350px; height: 385px;">
+    <form action="register.php" method="post" class="register" style="display: none;">
+        <h3><cufon class="cufon cufon-canvas" alt="Register" style="width: 106px; height: 25px;"><canvas width="122" height="28" style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas><cufontext>Register</cufontext></cufon></h3>
+        <div class="column">
+            <div>
+                <label>Username:</label>
+                <input type="text" name="username">
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="text" name="email">
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password"  name="password">
+            </div>
+        </div>
+        <div class="bottom">
+            <input type="submit" value="注册">
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>
+</div>
 <?php
 display_buttom();
 ?>
