@@ -116,4 +116,9 @@ sudo /usr/local/mysql/support-files/mysql.server start
 >[MySql数据库Plugin 'FEDERATED' is disabled.错误解决方法](http://www.111cn.net/database/mysql/55532.htm)    
 >[mysql启动时报错: [Note] Plugin 'FEDERATED' is disabled. Plugin 'ndbcluster' is disabled](http://xingxing5421.blog.163.com/blog/static/11944631920123923537430/)    
 
+###Q4:记HTTP ERROR 500  
+####如下  
+![HTTP ERROR 500.png](https://ooo.0o0.ooo/2016/12/11/584d63161cdde.png)    
+###原因是：我在删除文件后没有把用到它的require语句删除    
+
 
