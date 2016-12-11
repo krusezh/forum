@@ -88,7 +88,7 @@ function display_reply_of_article($articleid) {
                 $user_row = $user_result->fetch_assoc();
                 echo "<div class='cell item'><span float:left>";
                 display_image($user_row[e_mail],48);
-                echo "</span></div>";
+                echo "</span>";
                 echo "<div>";
                     //回复者姓名
                     echo "<div>";
@@ -102,7 +102,7 @@ function display_reply_of_article($articleid) {
                         $Parsedown = new Parsedown();
                         echo $Parsedown->text($row[article_content]);
                     echo "</div>";
-                echo "</div>";
+                echo "</div></div>";
             }
             ?>
         </div>
