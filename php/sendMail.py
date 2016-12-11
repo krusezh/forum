@@ -21,7 +21,7 @@ def send_mail(mreceive,murl):
             这是一封注册认证邮件，请点击以下链接确认
             <br />
             <br />
-            <a href="http://redfolder.cn/php/active.php?verify={0}">http://redfolder.cn/php/active.php?verify={0}</a>
+            <a href="http://redfolder.cn/forum/php/active.php?verify={0}">http://redfolder.cn/forum/php/active.php?verify={0}</a>
             <br />
             <br />
             如果链接不能点击，请复制以上地址到浏览器，然后直接打开。
