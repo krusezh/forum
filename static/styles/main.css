@@ -144,6 +144,20 @@ a.strong {
 }
 
 
+/*文章详情页样式*/
+.user-photo {
+    margin-top: 50px;
+}
+.article-h1 {
+    font-size: 20px;
+    margin: 15px;
+}
+.article-content {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding: 20px 30px;
+}
+
 /*底部样式*/
 .footer {
     margin-top: 40px;

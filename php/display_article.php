@@ -23,22 +23,23 @@ function display_article($username,$articleid) {
         $user_row = $user_result->fetch_assoc();
         ?>
         <!--头像-->
-        <div>
+        <div class="user-photo">
             <a href="profile.php?username=<?php echo $username?>"><?php display_image($user_row[e_mail],73);?></a>
         </div>
         <!--标题-->
         <div>
-            <a href=""><?php echo $row[node_name]?></a>
-            <h1><?php echo get_title($articleid)?></h1>
+            <h1 class="article-h1"><?php echo get_title($articleid)?></h1>
+            <a href="javascript:;" class="node"><?php echo $row[node_name]?></a>
         </div>
         <small>
-            <a href="profile.php?username=<?php echo $username?>"><?php echo $username?></a>
+            作者：<a href="profile.php?username=<?php echo $username?>"><?php echo $username?></a>
+            发表于：
             <?php
             echo $row[post_time];
             ?>
         </small>
         <!--正文-->
-        <div>
+        <div class="article-content">
             <?php
             $Parsedown = new Parsedown();
             echo $Parsedown->text($row[article_content]);
