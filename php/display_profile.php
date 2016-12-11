@@ -19,12 +19,12 @@ function display_info($username) {
     echo "<br />";
     echo "<span>论坛第".$row[user_id]."号会员，加入于".$row[reg_time]."</span>";
     echo "<br />";
-    echo "<div class='cell item'>";
+    echo "<div style='font-size:14px;'>";
     echo $username."创建的主题<br />";
     display_topic($row[user_id],$username);
 
     echo "</div><br />";
-    echo "<div class='cell item'>";
+    echo "<div>";
     echo $username."最近回复了<br />";
     display_reply($row[user_id]);
     echo "</div>";
@@ -41,7 +41,7 @@ function display_topic($userid, $username) {
     }
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()){
-            echo "<div>";
+            echo "<div class='cell item'>";
             echo "<span>$row[title]</span>";
             echo "<br />";
             echo "<span>$row[node_name] $username $row[post_time]</span>";
@@ -92,8 +92,9 @@ function display_user_topic($article_id){
         throw new Exception('Could not execute query.');
     }
     $row = $result->fetch_assoc();
+    echo "<div class='cell item'>";
     echo "<span>回复了".$row[user_name]."创建的主题 >".$row[title]."</span>";
-    echo "<br />";
+    echo "</div>";
     $conn->close();
 }
 
