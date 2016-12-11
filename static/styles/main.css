@@ -208,6 +208,11 @@ a.strong {
     border-color: #7B72E9;
     color: #FFF;
 }
+.center {
+    margin: 0 auto;
+}
+
+
 /*底部样式*/
 .footer {
     margin-top: 40px;

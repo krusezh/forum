@@ -11,7 +11,7 @@ session_start();
 display_head('创作新主题');
 display_top();
 ?>
-<div>
+<div class="wrapper center">
     <div>
         <span>创作新主题</span>
     </div>
