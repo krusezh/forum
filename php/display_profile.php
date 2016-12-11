@@ -12,19 +12,22 @@ function display_info($username) {
 ?>
     <!--头像-->
 <?php
+    echo "<div class='user-photo'>";
     display_image($row[e_mail],73);
-    echo "<span>".$username."</span>";
+    echo "</div>";
+    echo "<span class='article-h1'>".$username."</span>";
     echo "<br />";
     echo "<span>论坛第".$row[user_id]."号会员，加入于".$row[reg_time]."</span>";
     echo "<br />";
-
+    echo "<div class='cell item'>"
     echo $username."创建的主题<br />";
     display_topic($row[user_id],$username);
 
-    echo "<br />";
-
+    echo "</div><br />";
+    echo "<div class='cell item'>"
     echo $username."最近回复了<br />";
     display_reply($row[user_id]);
+    echo "</div>"
 
 }
 
