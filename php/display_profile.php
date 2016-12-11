@@ -42,9 +42,9 @@ function display_topic($userid, $username) {
     if($result->num_rows>0) {
         while($row=$result->fetch_assoc()){
             echo "<div class='cell item'>";
-            echo "<span>$row[title]</span>";
+            echo "<span style='font-size:18px;line-height:35px;'>$row[title]</span>";
             echo "<br />";
-            echo "<span>$row[node_name] $username $row[post_time]</span>";
+            echo "<span><a class='node'>$row[node_name]</a> $username $row[post_time]</span>";
             display_reply_num($row[article_id]);
             echo "</div>";
         }
