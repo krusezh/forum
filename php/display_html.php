@@ -64,27 +64,30 @@ function display_wrapper($flag,$username='none',$password='none',$articelid=0,$e
 <?php
 }
 
-function display_main($flag, $username, $password,$articleid,$email) {
+function display_main($flag, $name, $password,$articleid,$email) {
 ?>
     <div class="content-main">
         <?php
-        if($flag==='profile'){
-            display_info($username);
+        if($flag==='profile') {
+            display_info($name);
         }
-        elseif($flag==='index'){
+        elseif($flag==='index') {
             display_index();
         }
-        elseif($flag==='logout'){
-            logout($username);
+        elseif($flag==='logout') {
+            logout($name);
         }
-        elseif($flag==='login'){
-            login($username,$password);
+        elseif($flag==='login') {
+            login($name,$password);
         }
-        elseif($flag==='register'){
-            register($username,$password,$email);
+        elseif($flag==='register') {
+            register($name,$password,$email);
         }
-        elseif($flag==='article'){
-            display_article($username,$articleid);
+        elseif($flag==='article') {
+            display_article($name,$articleid);
+        }
+        elseif($flag==='node') {
+            display_specific_node($name);
         }
         ?>
     </div>
@@ -135,13 +138,13 @@ function display_right_bar($flag,$place='') {
             $conn = db_connect();
             $query = "select * from userinfo";
             $result = $conn->query($query);
-            echo "<span>注册会员&nbsp&nbsp$result->num_rows</span>";
+            echo "<span>注册会员&nbsp;&nbsp;$result->num_rows</span>";
             $query = "select * from article where parent_id=0";
             $result = $conn->query($query);
-            echo "<span>主题&nbsp&nbsp$result->num_rows</span>";
+            echo "<span>主题&nbsp&nbsp;$result->num_rows</span>";
             $query = "select * from article where parent_id<>0";
             $result = $conn->query($query);
-            echo "<span>回复&nbsp&nbsp$result->num_rows</span>";
+            echo "<span>回复&nbsp;&nbsp;$result->num_rows</span>";
             echo "</div>";
         echo "</div>";
         ?>

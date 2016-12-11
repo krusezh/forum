@@ -22,7 +22,7 @@ function display_index($tabname='技术') {
         <?php
         echo "<a class=".(($tabname===$tab[0]) ? 'tab_current' : 'tab')." href='../forum/index.php?tab=$tab[0]'>$tab[0]</a>";
         for($i=1; $i<10; $i++) {
-            echo "&nbsp";
+            echo "&nbsp;";
             echo "<a class=".(($tabname===$tab[$i]) ? 'tab_current' : 'tab')." href='../forum/index.php?tab=$tab[$i]'>$tab[$i]</a>";
         }
         ?>
@@ -46,17 +46,13 @@ function display_node($tabname) {
     }
     if($result->num_rows>0) {
         $row=$result->fetch_assoc();
-        echo "<a href='./php/display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
+        echo "<a href='./php/node.php?nodename=$row[node_name]'>$row[node_name]</a>";
         while($row=$result->fetch_assoc()) {
-            echo "&nbsp";
-            echo "<a href='./php/display_node.php?nodename=$row[node_name]'>$row[node_name]</a>";
+            echo "&nbsp;";
+            echo "<a href='./php/node.php?nodename=$row[node_name]'>$row[node_name]</a>";
         }
     }
     $conn->close();
-}
-
-function display_specific_node($nodeid) {
-
 }
 
 function display_title($tabname) {
@@ -76,10 +72,41 @@ function display_title($tabname) {
             echo "</a></span>";
             echo "<span><a style='font-size:18px;line-height:35px;' href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
             echo "<br />";
-            echo "<span><a class='node' href=''>$row[node_name]</a> &nbsp;&nbsp; &nbsp; •<a class='strong' href='./php/profile.php?username=$row[user_name]'>$row[user_name]&nbsp;</a>发表于&nbsp;&nbsp;$row[post_time]</span>&nbsp;&nbsp;&nbsp;&nbsp;回复数：";
+            echo "<span><a class='node' href='./php/node.php?nodename=$row[nodename]'>$row[node_name]</a> &nbsp;&nbsp; &nbsp; •<a class='strong' href='./php/profile.php?username=$row[user_name]'>$row[user_name]&nbsp;</a>发表于&nbsp;&nbsp;$row[post_time]</span>&nbsp;&nbsp;&nbsp;&nbsp;回复数：";
             display_reply_num($row[article_id]);
             echo "</div>";
         }
     }
     $conn->close();
+}
+
+function display_specific_node($nodename) {
+    $conn=db_connect();
+    $query = "select * from userinfo,article,article_info,node where article.author_id=userinfo.user_id and article.article_id=article_info.article_id".
+            " and article_info.node_id=node.node_id and node.node_name='$nodename'";
+    $result=$conn->query($query);
+    if(!$result) {
+        throw new Exception('Could not execute query.');
+    }
+    ?>
+    <div>
+        <div>
+            <span>NODE</span>
+            <span> > </span>
+            <span><?php echo $nodename?></span>
+        </div>
+        <div>
+            <?php
+            if($result->num_rows>0) {
+
+            }
+            else {
+                echo "尚无主题";
+            }
+            ?>
+        </div>
+    </div>
+    <?php
+
+
 }
