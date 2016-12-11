@@ -101,8 +101,25 @@ function display_right_bar() {
 
 function display_buttom() {
 ?>
-    <div>
-
+    <div class="footer">
+        <div class="content wrapper">
+            <div class="inner">
+                <div class="sep10"></div>
+                    <div class="fr">
+                    
+                    </div>
+                    <strong><a href="/about" class="dark" target="_self">关于</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/faq" class="dark" target="_self">FAQ</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/p/7v9TEc53" class="dark" target="_self">API</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/mission" class="dark" target="_self">我们的愿景</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/ip" class="dark" target="_self">IP 查询</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/advertise" class="dark" target="_self">广告投放</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/advertise/2015.html" class="dark" target="_self">鸣谢</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/start" class="dark" target="_blank">上网首页</a> &nbsp; <span class="snow">·</span> &nbsp; 1198 人在线</strong> &nbsp; <span class="fade">最高记录 2399</span> &nbsp; <span class="snow">·</span> &nbsp;
+                    <div class="sep20"></div>
+                    创意工作者们的社区
+                    <div class="sep5"></div>
+                    World is powered by solitude
+                    <div class="sep20"></div>
+                    <span class="small fade">VERSION: 3.9.7.5 · 31ms · UTC 05:44 · PVG 13:44 · LAX 21:44 · JFK 00:44<br>♥ Do have faith in what you're doing.</span>
+                    <div class="sep20"></div>
+                    <span class="f12 gray"><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">沪ICP备16043287号-1</a></span>
+                <div class="sep10"></div>
+            </div>
+        </div>
     </div>
 <?php
 }

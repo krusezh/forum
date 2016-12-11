@@ -32,7 +32,7 @@ body {
 	font-size: 16px;
     font-weight: 400;
     height: 44px;
-    width: 300px;
+    min-width: 400px;
     line-height: 44px;
 }
 .header-nav >span {
@@ -53,7 +53,7 @@ body {
     margin-top: 20px;
 	float: left;
 	width: 770px;
-	min-height: 200px;
+	min-height: 400px;
 	background-color: #fff;
 }
 .content-right {
@@ -141,4 +141,19 @@ a.node:hover {
 }
 a.strong {
     font-weight: 400;
+}
+
+
+/*底部样式*/
+.footer {
+    margin-top: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.22);
+    background-color: #fff;
+    text-align: center;
+    color: #999;
+    padding: 0px 10px 0px 10px;
+}
+.footer .content {
+    background-color: #fff;
+    background-image: none;
 }
