@@ -163,7 +163,6 @@ a.strong {
     border-bottom: none;
 }
 .textarea {
-    padding: 10px;
     -moz-box-shadow:1px 1px 0 #E7E7E7;
     -moz-box-sizing:border-box;
     border-color:#CCCCCC #999999 #999999 #CCCCCC;
@@ -176,8 +175,8 @@ a.strong {
     outline-color:-moz-use-text-color;
     outline-style:none;
     outline-width:medium;
-    padding:2px;
-    width:100%;
+    padding: 10px;
+    width: 93%;
 }
 .button {
     color: #666;
