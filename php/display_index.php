@@ -20,7 +20,7 @@ function display_index($tabname='技术') {
     <div class="inner">
         <!--标签-->
         <?php
-        echo "<a class=".(($tabname===tab[0]) ? 'tab_current' : 'tab')." href='../forum/index.php?tab=$tab[0]'>$tab[0]</a>";
+        echo "<a class=".(($tabname===$tab[0]) ? 'tab_current' : 'tab')." href='../forum/index.php?tab=$tab[0]'>$tab[0]</a>";
         for($i=1; $i<10; $i++) {
             echo "&nbsp";
             echo "<a class=".(($tabname===$tab[$i]) ? 'tab_current' : 'tab')." href='../forum/index.php?tab=$tab[$i]'>$tab[$i]</a>";
