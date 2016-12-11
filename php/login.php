@@ -38,7 +38,7 @@ if(check_valid_user()){
 else {
     ?>
     <div class="wrapper" style="margin-top:25px;">
-    <div id="form_wrapper" class="form_wrapper" style="width: 350px; height: 385px;">
+    <div id="form_wrapper" class="form_wrapper" style="width: 350px; height: 330px;">
                 <form class="login active"  action="login.php" method="post">
                     <h3><cufon class="cufon cufon-canvas" alt="Login" style="width: 73px; height: 25px;"><canvas width="84" height="28" style="width: 84px; height: 28px; top: -2px; left: 0px;"></canvas><cufontext>Login</cufontext></cufon></h3>
                     <div>
