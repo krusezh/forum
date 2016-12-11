@@ -79,16 +79,16 @@ function display_reply_of_article($articleid) {
     if($result->num_rows>0) {
         ?>
         <div>
-            <div>
-            <span><?php echo $result->num_rows?> 回复</span>
+            <div  style="text-align: right;padding-right: 40px;">
+            <span>共<?php echo $result->num_rows?>条回复</span>
             </div>
             <?php
             while($row=$result->fetch_assoc()){
                 $user_result = get_use_info($row[user_name]);
                 $user_row = $user_result->fetch_assoc();
-                echo "<div>";
+                echo "<div class='cell item'><span float:left>";
                 display_image($user_row[e_mail],48);
-                echo "</div>";
+                echo "</span></div>";
                 echo "<div>";
                     //回复者姓名
                     echo "<div>";
