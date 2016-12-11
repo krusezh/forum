@@ -19,15 +19,15 @@ function display_info($username) {
     echo "<br />";
     echo "<span>论坛第".$row[user_id]."号会员，加入于".$row[reg_time]."</span>";
     echo "<br />";
-    echo "<div class='cell item'>"
+    echo "<div class='cell item'>";
     echo $username."创建的主题<br />";
     display_topic($row[user_id],$username);
 
     echo "</div><br />";
-    echo "<div class='cell item'>"
+    echo "<div class='cell item'>";
     echo $username."最近回复了<br />";
     display_reply($row[user_id]);
-    echo "</div>"
+    echo "</div>";
 
 }
 
