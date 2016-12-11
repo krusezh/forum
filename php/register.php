@@ -46,11 +46,10 @@ if($username && $userpwd && $email) {
 }
 ?>
 
-<div class="wrapper">
+<div class="wrapper" style="margin-top:25px;">
 <div id="form_wrapper" class="form_wrapper" style="width: 350px; height: 385px;">
-    <form action="register.php" method="post" class="register" style="display: none;">
+    <form action="register.php" method="post" class="login active">
         <h3><cufon class="cufon cufon-canvas" alt="Register" style="width: 106px; height: 25px;"><canvas width="122" height="28" style="width: 122px; height: 28px; top: -2px; left: 0px;"></canvas><cufontext>Register</cufontext></cufon></h3>
-        <div class="column">
             <div>
                 <label>Username:</label>
                 <input type="text" name="username">
@@ -63,11 +62,9 @@ if($username && $userpwd && $email) {
                 <label>Password:</label>
                 <input type="password"  name="password">
             </div>
-        </div>
-        <div class="bottom">
-            <input type="submit" value="注册">
-            <div class="clear"></div>
-        </div>
+            <div class="bottom clearfix">
+                <input type="submit" value="注册">
+            </div>
     </form>
 </div>
 </div>
