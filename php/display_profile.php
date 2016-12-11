@@ -24,7 +24,7 @@ function display_info($username) {
     display_topic($row[user_id],$username);
 
     echo "</div><br />";
-    echo "<div>";
+    echo "<div >";
     echo $username."最近回复了<br />";
     display_reply($row[user_id]);
     echo "</div>";
@@ -92,9 +92,8 @@ function display_user_topic($article_id){
         throw new Exception('Could not execute query.');
     }
     $row = $result->fetch_assoc();
-    echo "<div class='cell item'>";
     echo "<span>回复了".$row[user_name]."创建的主题 >".$row[title]."</span>";
-    echo "</div>";
+    echo "<br/>";
     $conn->close();
 }
 
