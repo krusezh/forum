@@ -162,6 +162,53 @@ a.strong {
     margin-left: 30px;
     border-bottom: none;
 }
+.textarea {
+    padding: 10px;
+    -moz-box-shadow:1px 1px 0 #E7E7E7;
+    -moz-box-sizing:border-box;
+    border-color:#CCCCCC #999999 #999999 #CCCCCC;
+    border-style:solid;
+    border-width:1px;
+    font-family:arial,sans-serif;
+    font-size:13px;
+    height:160px;
+    margin:10px auto;
+    outline-color:-moz-use-text-color;
+    outline-style:none;
+    outline-width:medium;
+    padding:2px;
+    width:100%;
+}
+.button {
+    color: #666;
+    background-color: #EEE;
+    border-color: #EEE;
+    font-weight: 300;
+    font-size: 16px;
+    font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 40px;
+    margin: 0;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+.button-royal {
+    background-color: #7B72E9;
+    border-color: #7B72E9;
+    color: #FFF;
+}
 /*底部样式*/
 .footer {
     margin-top: 40px;

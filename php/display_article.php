@@ -122,14 +122,11 @@ function display_reply_form($username,$articleid) {
     $_SESSION['once'] = $code;
     ?>
     <div>
-        添加一条回复
-    </div>
-    <div>
         <form method="post" action="article.php?username=<?php echo $username;?>&articleid=<?php echo $articleid;?>">
-            <textarea name="replycontent"></textarea>
+            <textarea name="replycontent" class="textarea"></textarea>
             <input type="hidden" name="once" value="<?php echo $code?>">
             <input type="hidden" name="articleid" value="<?php echo $articleid?>">
-            <input type="submit" value="回复">
+            <input class="button button-royal" style='margin-bottom: 20px;' type="submit" value="回复">
         </form>
     </div>
     <?php
