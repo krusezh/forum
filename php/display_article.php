@@ -89,18 +89,18 @@ function display_reply_of_article($articleid) {
                 echo "<div class='cell item'><span float:left>";
                 display_image($user_row[e_mail],48);
                 echo "</span>";
-                echo "<div>";
+                echo "<div class='cell reply'>";
+                    //回复内容
+                    echo "<div style='font-size:14px'>";
+                        $Parsedown = new Parsedown();
+                        echo $Parsedown->text($row[article_content]);
+                    echo "</div>";
                     //回复者姓名
-                    echo "<div>";
+                    echo "<div style='font-size:14px'>";
                         echo "<strong><a href='profile.php?username=$row[username]'>$row[user_name]</a></strong>";
                         echo "&nbsp";
                         //回复时间
-                        echo "<span>$row[post_time]</span>";
-                    echo "</div>";
-                    //回复内容
-                    echo "<div>";
-                        $Parsedown = new Parsedown();
-                        echo $Parsedown->text($row[article_content]);
+                        echo "<span style='font-size:12px'>$row[post_time]</span>";
                     echo "</div>";
                 echo "</div></div>";
             }

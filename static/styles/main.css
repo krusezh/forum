@@ -157,7 +157,10 @@ a.strong {
     border-top: 1px solid #eee;
     padding: 20px 30px;
 }
-
+.cell .reply {
+    display: inline-block;
+    margin-left: 30px;
+}
 /*底部样式*/
 .footer {
     margin-top: 40px;
