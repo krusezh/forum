@@ -2,23 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: dim
- * Date: 2016/12/7
- * Time: 下午10:11
+ * Date: 2016/12/12
+ * Time: 下午7:40
  */
 header("Content-type:text/html;charset=utf-8");
-date_default_timezone_set("Etc/GMT-8");
 require_once ('functions.php');
 session_start();
 ob_start();
 
-$username = $_GET['username'];
-$articleid = $_GET['articleid'];
-settype($articleid,'integer');
-
-if($_POST['replycontent'] && $_POST['articleid'] && $_POST['once']){
+if(isset($_SESSION['once']) && isset($_POST['once'])) {
     if($_SESSION['once'] == $_POST['once']) {
         try {
-            publish_reply($_POST);
+            if(!check_valid_user()) {
+                throw new Exception('404: Not Found');
+            }
+            set_extra_info();
         }
         catch (Exception $e) {
             ob_end_clean();
@@ -28,7 +26,7 @@ if($_POST['replycontent'] && $_POST['articleid'] && $_POST['once']){
         }
     }
     else {
-        $url = "article.php?username=$username&articleid=$articleid";
+        $url = "setting.php";
         echo "<script type='text/javascript'>";
         echo "window.location.href='$url'";
         echo "</script>";
@@ -36,16 +34,13 @@ if($_POST['replycontent'] && $_POST['articleid'] && $_POST['once']){
 }
 
 try {
-    if(!$username || !$articleid) {
-        throw new Exception('404: Not Found7');
+    if(!check_valid_user()) {
+        throw new Exception('404: Not Found');
     }
-    else {
-        $title = get_title($articleid);
-        display_head($title);
-        display_top();
-        display_wrapper('article',$username,'none',$articleid);
-        display_buttom();
-    }
+    display_head('设置');
+    display_top();
+    display_wrapper('setting');
+    display_buttom();
 }
 catch (Exception $e) {
     ob_end_clean();
@@ -53,5 +48,3 @@ catch (Exception $e) {
     echo $e->getMessage();
     exit;
 }
-?>
-

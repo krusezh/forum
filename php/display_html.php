@@ -34,7 +34,7 @@ function display_top($place='') {
                     $username = $_SESSION['valid_user'];
                     ?>
                     <span><a href="<?php echo $place;?>profile.php?username=<?php echo $username;?>"><?php echo $username;?></a></span>
-                    <span><a href="<?php echo $place;?>write_article.php">创建新主题</a></span>
+                    <span><a href="<?php echo $place;?>setting.php">设置</a></span>
                     <span><a href="<?php echo $place;?>logout.php">登出</a></span>
                     <?php
                 }
@@ -88,6 +88,9 @@ function display_main($flag, $name, $password,$articleid,$email) {
         }
         elseif($flag==='node') {
             display_specific_node($name);
+        }
+        elseif($flag==='setting') {
+            display_setting();
         }
         ?>
     </div>

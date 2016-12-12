@@ -13,6 +13,12 @@ create table userinfo(
 	active_status tinyint(1) not null default 0
 );
 
+create table extra_user_info(
+	user_name char(50) not null,
+	personal_website char(30) not null default 'none',
+	signature char(50) not null default 'none'
+);
+
 create table article(
 	article_id int unsigned not null auto_increment primary key,
 	parent_id int unsigned not null,
