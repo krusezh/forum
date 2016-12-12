@@ -47,4 +47,3 @@ def send_mail(mreceive,murl):
 if __name__ == "__main__":
     args=sys.argv
     send_mail(args[1],args[2])
-    print args[2]

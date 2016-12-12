@@ -58,7 +58,7 @@ function display_node($tabname) {
 function display_title($tabname) {
     $conn = db_connect();
     $query = "select * from userinfo,article,article_info,node where article.author_id=userinfo.user_id and article.article_id=article_info.article_id ".
-            "and article_info.node_id=node.node_id and node.node_id in (select node_id from tab where tab_name='$tabname')";
+            "and article_info.node_id=node.node_id and node.node_id in (select node_id from tab where tab_name='$tabname') limit 20";
     $result = $conn->query($query);
 
     if(!$result) {
@@ -81,12 +81,24 @@ function display_title($tabname) {
 }
 
 function display_specific_node($nodename) {
+    $current_page = $_REQUEST['page'];
+
     $conn=db_connect();
-    $query = "select * from userinfo,article,article_info,node where article.author_id=userinfo.user_id and article.article_id=article_info.article_id".
-            " and article_info.node_id=node.node_id and node.node_name='$nodename'";
+    $query = "select * from article_info,node where article_info.node_id=node.node_id and node.node_name='$nodename'";
     $result=$conn->query($query);
     if(!$result) {
         throw new Exception('Could not execute query.');
+    }
+    $max_page = ceil($result->num_rows/20);
+
+    if(!$current_page) {
+        $current_page = 1;
+    }
+    elseif($current_page > $max_page) {
+        throw new Exception('404: Not Found');
+    }
+    elseif($current_page < 1) {
+        throw new Exception('404: Not Found');
     }
     ?>
     <div>
@@ -94,11 +106,62 @@ function display_specific_node($nodename) {
             <span>NODE</span>
             <span> > </span>
             <span><?php echo $nodename?></span>
+            <div>
+                <span>主题总数</span>
+                <span><?php echo $result->num_rows?></span>
+            </div>
         </div>
         <div>
             <?php
             if($result->num_rows>0) {
-
+                $place_begin = ($current_page-1)*20;
+                $query = "select * from userinfo,article,article_info,node where article.author_id=userinfo.user_id and ".
+                    "article.article_id=article_info.article_id and article_info.node_id=node.node_id and node.node_name='$nodename' limit $place_begin,20";
+                $result = $conn->query($query);
+                if(!$result) {
+                    throw new Exception('Could not execute query');
+                }
+                while ($row=$result->fetch_assoc()) {
+                    echo "<div class='cell item'>";
+                    echo "<span style='float:left'><a href='profile.php?username=$row[user_name]'>";
+                    display_image($row[e_mail],48);
+                    echo "</a></span>";
+                    echo "<span><a style='font-size:18px;line-height:35px;' href='article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
+                    echo "<br />";
+                    echo "<span><a class='strong' href='profile.php?username=$row[user_name]'>$row[user_name]&nbsp;</a>发表于&nbsp;&nbsp;$row[post_time]</span>&nbsp;&nbsp;&nbsp;&nbsp;回复数：";
+                    display_reply_num($row[article_id]);
+                    echo "</div>";
+                }
+                if($max_page>1) {
+                    echo "<div>";
+                    echo "<span>";
+                    echo "<a href='".$_SERVER['PHP_SELF']."?nodename=$nodename&page=1'>1</a>";
+                    if($current_page<=3) {
+                        for($i=2; $i<=$current_page+3 && $i<=$max_page; $i++) {
+                            echo "&nbsp;";
+                            echo "<a href='".$_SERVER['PHP_SELF']."?nodename=$nodename&page=$i'>$i</a>";
+                        }
+                    }
+                    else {
+                        echo "<span>...</span>";
+                        for($i=$current_page-2; $i<=$current_page+3 && $i<=$max_page; $i++) {
+                            echo "&nbsp;";
+                            echo "<a href='".$_SERVER['PHP_SELF']."?nodename=$nodename&page=$i'>$i</a>";
+                        }
+                    }
+                    if(($current_page+3) < $max_page) {
+                        echo "&nbsp;";
+                        echo "<span>...</span>";
+                        echo "&nbsp;";
+                        echo "<a href='".$_SERVER['PHP_SELF']."?nodename=$nodename&page=$max_page'>$max_page</a>";
+                    }
+                    echo "</span>";
+                    echo "<span>";
+                    echo "<a href='".$_SERVER['PHP_SELF']."?nodename=$nodename&page=$current_page-1'> < </a>";
+                    echo "<a href='".$_SERVER['PHP_SELF']."?nodename=$nodename&page=$current_page+1'> > </a>";
+                    echo "</span>";
+                    echo "</div>";
+                }
             }
             else {
                 echo "尚无主题";
@@ -107,6 +170,4 @@ function display_specific_node($nodename) {
         </div>
     </div>
     <?php
-
-
 }

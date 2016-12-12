@@ -19,7 +19,10 @@ function publish_article($data) {
 
     $conn = db_connect();
     $query = "insert into article values (NULL,0,$userid,'$date')";
+    //测试
+
     $result = $conn->query($query);
+
     if(!$result) {
         throw new Exception('Could not publish your article1.');
     }
@@ -38,7 +41,11 @@ function publish_article($data) {
 
 
     $query = "insert into article_info values ($articleid,'$title',0,$node)";
+
+
     $result = $conn->query($query);
+
+
     if(!$result) {
         $conn->query($delarticle);
         throw new Exception('Could not publish your article2.');
@@ -47,7 +54,10 @@ function publish_article($data) {
     $delarticle_info = "delete from article_info where article_id=$articleid";
 
     $query = "insert into article_content values ($articleid,'$content')";
+
+
     $result = $conn->query($query);
+
     if(!$result) {
         $conn->query($delarticle);
         $conn->query($delarticle_info);
