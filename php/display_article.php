@@ -97,7 +97,7 @@ function display_reply_of_article($articleid) {
                     echo "</div>";
                     //回复者姓名
                     echo "<div style='font-size:14px;margin-top: 10px;'>";
-                        echo "<strong><a href='profile.php?username=$row[username]'>$row[user_name]</a></strong>";
+                        echo "<strong><a href='profile.php?username=$row[user_name]'>$row[user_name]</a></strong>";
                         echo "&nbsp;";
                         //回复时间
                         echo "<span style='font-size:12px'>$row[post_time]</span>";
