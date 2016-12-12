@@ -51,9 +51,8 @@ function mv_avatar($image) {
         $name = $image["name"];
         $current_place = $uploads_dir.$name;
         $status = move_uploaded_file($tmp_name, $current_place);
-
+        var_dump($tmp_name);
         if(!$status) {
-            var_dump($status);
             throw new Exception("移动头像失败$status");
         }
     }

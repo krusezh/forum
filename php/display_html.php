@@ -28,7 +28,7 @@ function display_top($place='') {
         <div class="wrapper clearfix">
         <div class="header-logo">FORUM</div>
             <div class="header-nav">
-                <span><a href="http://localhost/phpstorm/forum/">首页</a></span>
+                <span><a href="http://redfolder.cn/forum/">首页</a></span>
                 <?php
                 if(check_valid_user()) {
                     $username = $_SESSION['valid_user'];
