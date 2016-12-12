@@ -13,7 +13,7 @@ function display_info($username) {
     <!--头像-->
 <?php
     echo "<div class='user-photo'>";
-    display_image($row[e_mail],73);
+    echo "<img src='".display_image($row[user_name])."' width='73' height='73'>";
     echo "</div>";
     echo "<span class='article-h1'>".$username."</span>";
     echo "<br />";
@@ -100,7 +100,7 @@ function display_user_topic($article_id){
 function get_use_info($username) {
     $conn = db_connect();
 
-    $query = "select user_id, user_name, e_mail, reg_time, active_time, active_status from userinfo where user_name='$username'";
+    $query = "select * from userinfo where user_name='$username'";
     $result = $conn->query($query);
     if(!$result){
         throw new Exception('Could not execute query.');

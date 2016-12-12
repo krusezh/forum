@@ -7,14 +7,18 @@
  */
 
 function register($username, $password, $email){
+    require_once ('Gravatar.php');
+    $gravatar = new Gravatar($email,'retro');
+    $image_url = $gravatar->getSrc();
     $password = password_hash($password, PASSWORD_DEFAULT);
     $date = date("Y-m-d H:i:s");
     $active_code = password_hash($username.$date,PASSWORD_DEFAULT);
     $active_code = addcslashes($active_code,'$');
     $active_time = time()+60*60*24;
 
+
     $conn = db_connect();
-    $result = $conn->query("select * from userinfo where user_name='".$username."'");
+    $result = $conn->query("select * from userinfo where user_name='$username'");
     if(!$result){
         throw new Exception('Could not execute query');
     }
@@ -22,7 +26,7 @@ function register($username, $password, $email){
         throw new Exception('That username is taken - go back and choose another one.');
     }
 
-    $query = "insert into userinfo values (NULL,'$username','$password','$email','$date',$active_time,0)";
+    $query = "insert into userinfo values (NULL,'$username','$password','$email','$image_url','$date',$active_time,0)";
     $result = $conn->query($query);
 
     if(!$result){
@@ -220,3 +224,4 @@ function set_site_and_signature($username) {
     }
     $conn->close();
 }
+

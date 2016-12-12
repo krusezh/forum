@@ -92,6 +92,9 @@ function display_main($flag, $name, $password,$articleid,$email) {
         elseif($flag==='setting') {
             display_setting();
         }
+        elseif($flag==='avatar') {
+            set_avatar($name);
+        }
         ?>
     </div>
 <?php
@@ -111,7 +114,7 @@ function display_right_bar($flag,$place='') {
             <div>
                 <div>
                     <a href="<?php echo $place;?>profile.php?username=<?php echo $_SESSION['valid_user']?>">
-                        <?php display_image($user_row[e_mail],48)?>
+                        <?php echo "<img src='".display_image($user_row[user_name])."' width='48' height='48'>";?>
                     </a>
                     <span>
                         <a href="<?php echo $place;?>profile.php?username=<?php echo $_SESSION['valid_user']?>"><?php echo $_SESSION['valid_user'];?></a>

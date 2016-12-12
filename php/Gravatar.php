@@ -45,7 +45,7 @@ class Gravatar
     protected $properties = array(
         "gravatar_id"	=> NULL,
         "default"		=> NULL,
-        "size"			=> 80,        // The default value
+        "size"			=> NULL,        // The default value
         "rating"		=> NULL,
         "border"		=> NULL,
     );

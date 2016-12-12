@@ -8,6 +8,7 @@ create table userinfo(
 	user_name char(50) not null,
 	password char(255) not null,
 	e_mail char(30) not null,
+	image_url char(100) not null,
 	reg_time datetime not null,
 	active_time int not null,
 	active_status tinyint(1) not null default 0

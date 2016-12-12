@@ -6,9 +6,8 @@
  * Time: 上午9:39
  */
 
-function display_image($email,$size,$default='retro') {
-    require_once ('Gravatar.php');
-    $gravatar = new Gravatar($email,$default);
-    $gravatar->setSize($size);
-    echo $gravatar->toHTML();
+function display_image($username) {
+    $result = get_use_info($username);
+    $row = $result->fetch_assoc();
+    return $row['image_url'];
 }

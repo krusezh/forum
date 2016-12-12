@@ -17,3 +17,4 @@ require_once ('Parsedown.php');
 require_once ('display_image.php');
 require_once ('send_email_by_python.php');
 require_once ('display_setting.php');
+require_once ('set_avatar.php');

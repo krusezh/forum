@@ -24,7 +24,7 @@ function display_article($username,$articleid) {
         ?>
         <!--头像-->
         <div class="user-photo">
-            <a href="profile.php?username=<?php echo $username?>"><?php display_image($user_row[e_mail],73);?></a>
+            <a href="profile.php?username=<?php echo $username?>"><?php echo "<img src='".display_image($user_row[user_name])."' width='73' height='73'>";?></a>
         </div>
         <!--标题-->
         <div>
@@ -87,7 +87,7 @@ function display_reply_of_article($articleid) {
                 $user_result = get_use_info($row[user_name]);
                 $user_row = $user_result->fetch_assoc();
                 echo "<div class='cell item'><span float:left>";
-                display_image($user_row[e_mail],48);
+                echo "<img src='".display_image($user_row[user_name])."' width='48' height='48'>";
                 echo "</span>";
                 echo "<div class='cell reply'>";
                     //回复内容

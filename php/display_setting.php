@@ -50,11 +50,11 @@ function display_setting() {
         </div>
         <div>
             <span>当前头像</span>
-            <span><?php display_image($row[e_mail],73)?></span>
+            <span><?php echo "<img src='".display_image($row[user_name])."' width='73' height='73'>";?></span>
             &nbsp;
-            <span><?php display_image($row[e_mail],48)?></span>
+            <span><?php echo "<img src='".display_image($row[user_name])."' width='48' height='48'>";?></span>
             &nbsp;
-            <span><?php display_image($row[e_mail],24)?></span>
+            <span><?php echo "<img src='".display_image($row[user_name])."' width='24' height='24'>";?></span>
         </div>
         <div>
             <input onclick="location.href='avatar.php'" value="上传新头像" type="button">

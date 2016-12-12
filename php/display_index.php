@@ -68,7 +68,7 @@ function display_title($tabname) {
         while($row=$result->fetch_assoc()) {
             echo "<div class='cell item'>";
             echo "<span style='float:left'><a href='./php/profile.php?username=$row[user_name]'>";
-            display_image($row[e_mail],48);
+            echo "<img src='".display_image($row[user_name])."' width='48' height='48'>";
             echo "</a></span>";
             echo "<span><a style='font-size:18px;line-height:35px;' href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
             echo "<br />";
@@ -124,7 +124,7 @@ function display_specific_node($nodename) {
                 while ($row=$result->fetch_assoc()) {
                     echo "<div class='cell item'>";
                     echo "<span style='float:left'><a href='profile.php?username=$row[user_name]'>";
-                    display_image($row[e_mail],48);
+                    echo "<img src='".display_image($row[user_name])."' width='48' height='48'>";
                     echo "</a></span>";
                     echo "<span><a style='font-size:18px;line-height:35px;' href='article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
                     echo "<br />";
