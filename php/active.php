@@ -11,11 +11,11 @@ session_start();
 ob_start();
 display_head('邮箱激活');
 display_top();
-$code = stripslashes(trim($_REQUEST['verify']));
+$code = stripcslashes(trim($_REQUEST['verify']));
 $username = $_SESSION['valid_user'];
 try {
     if(!$code) {
-        throw new Exception('404: Not Found');
+        throw new Exception('404: Not Found1');
     }
     if(!check_valid_user()) {
         throw new Exception('用户未登录');
@@ -25,11 +25,11 @@ try {
     $row = $result->fetch_assoc();
     $str = $row[user_name].$row[reg_time];
 
-    if($row['active_staus']) {
+    if($row[active_staus]) {
         throw new Exception('用户邮箱已经验证');
     }
 
-    if(time()>$row['active_time']) {
+    if(time()>$row[active_time]) {
         throw new Exception('验证邮件已经过期，进入设置重新发送验证邮件');
     }
 

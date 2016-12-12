@@ -12,7 +12,7 @@ def send_mail(mreceive,murl):
 
     #使用MIMEText构造符合smtp协议的header及body
     #下面构造网页
-    mail_msg = """
+    mail_msg = r"""
     <html>
         <body>
             恭喜你成功注册成为我们论坛的用户。
@@ -47,3 +47,4 @@ def send_mail(mreceive,murl):
 if __name__ == "__main__":
     args=sys.argv
     send_mail(args[1],args[2])
+    print args[2]

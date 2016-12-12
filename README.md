@@ -122,3 +122,38 @@ sudo /usr/local/mysql/support-files/mysql.server start
 ###原因是：我在删除文件后没有把用到它的require语句删除    
 
 
+###Q5:邮件验证失败    
+
+我是（用`exec()`函数）调用的python邮件程序，过程中出了点问题     
+
+* 发送的代码如下：    
+
+```bash     
+#第一个参数是收件邮箱
+#第二个参数是发送的代码
+python sendMail.py proape@126.com $2y$10$.POrgMfgZd7WchTkvuVcL.Y4YXcZamj3qCiWPNkHXqYKxzkvnP3.6
+```     
+
+这里我用的bash的语法高亮。。。（刚发现）`$2y$10`应该是特殊字符    
+
+结果收到的代码是：     
+
+```
+y$.POrgMfgZd7WchTkvuVcL.Y4YXcZamj3qCiWPNkHXqYKxzkvnP3.6
+```     
+
+python用了sys模块，然后在传入的时候`$2y$10`就没传进去   
+
+所以在php文件里生成代码的时候在外面加了一个addcslashes函数     
+
+```php
+$active_code = password_hash($code);
+$active_code = addcslashes($active_code, '$');
+```     
+
+接收验证的时候     
+
+```php
+$verify = stripcslashes($verify);
+```
+

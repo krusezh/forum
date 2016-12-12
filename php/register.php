@@ -38,11 +38,13 @@ if($username && $userpwd && $email) {
         exit;
     }
     display_buttom();
+
     $url = "../index.php";
     echo "<script type='text/javascript'>";
     echo "window.location.href='$url'";
     echo "</script>";
     exit;
+
 }
 ?>
 

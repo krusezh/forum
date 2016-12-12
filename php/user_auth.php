@@ -10,6 +10,7 @@ function register($username, $password, $email){
     $password = password_hash($password, PASSWORD_DEFAULT);
     $date = date("Y-m-d H:i:s");
     $active_code = password_hash($username.$date,PASSWORD_DEFAULT);
+    $active_code = addcslashes($active_code,'$');
     $active_time = time()+60*60*24;
 
     $conn = db_connect();
