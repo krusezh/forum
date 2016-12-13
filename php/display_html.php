@@ -111,46 +111,46 @@ function display_right_bar($flag,$place='') {
             $user_result = get_use_info($_SESSION['valid_user']);
             $user_row = $user_result->fetch_assoc();
             ?>
-            <div>
+            <div class="right-islogin">
                 <div>
                     <a href="<?php echo $place;?>profile.php?username=<?php echo $_SESSION['valid_user']?>">
                         <?php echo "<img src='".display_image($user_row[user_name])."' width='48' height='48'>";?>
                     </a>
                     <span>
-                        <a href="<?php echo $place;?>profile.php?username=<?php echo $_SESSION['valid_user']?>"><?php echo $_SESSION['valid_user'];?></a>
+                        <a style='display: block;margin: 5px;' href="<?php echo $place;?>profile.php?username=<?php echo $_SESSION['valid_user']?>"><?php echo $_SESSION['valid_user'];?></a>
                     </span>
                 </div>
                 <div>
-                    <a href="<?php echo $place;?>write_article.php"><img src="https://www.v2ex.com/static/img/flat_compose.png?v=7d21f0767aeba06f1dec21485cf5d2f1" width="25" height="25"></a>
-                    <a href="<?php echo $place;?>write_article.php">创作新主题</a>
+                    <a href="<?php echo $place;?>write_article.php"><img style="margin:-7px 3px" src="https://www.v2ex.com/static/img/flat_compose.png?v=7d21f0767aeba06f1dec21485cf5d2f1" width="25" height="25"></a>
+                    <a class="button-login" href="<?php echo $place;?>write_article.php">创作新主题</a>
                 </div>
             </div>
             <?php
         }
         else {
             ?>
-            <div>
-            <a href="<?php echo $place;?>register.php">现在注册</a>
+            <div class="right-not-login">
+            <a href="<?php echo $place;?>register.php" class='button-pill'>现在注册</a><br>
             已注册用户请
-            <a href="<?php echo $place;?>login.php">登录</a>
+            <a href="<?php echo $place;?>login.php" class='button-login'>登录</a>
             </div>
             <?php
         }
-        echo "<div>";
+        echo "<div class='web-status'>";
             echo "<div>";
-            echo "<span>论坛运行状况</span>";
+            echo "<span class='status-tip'>论坛运行状况</span>";
             echo "</div>";
             echo "<div>";
             $conn = db_connect();
             $query = "select * from userinfo";
             $result = $conn->query($query);
-            echo "<span>注册会员&nbsp;&nbsp;$result->num_rows</span>";
+            echo "<span class='status-wrapper'><div>注册会员</div><div>$result->num_rows</div></span>";
             $query = "select * from article where parent_id=0";
             $result = $conn->query($query);
-            echo "<span>主题&nbsp&nbsp;$result->num_rows</span>";
+            echo "<span class='status-wrapper'><div>主题</div><div>$result->num_rows</div></span>";
             $query = "select * from article where parent_id<>0";
             $result = $conn->query($query);
-            echo "<span>回复&nbsp;&nbsp;$result->num_rows</span>";
+            echo "<span class='status-wrapper'><div>回复</div><div>$result->num_rows</div></span>";
             echo "</div>";
         echo "</div>";
         ?>

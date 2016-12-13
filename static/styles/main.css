@@ -60,7 +60,7 @@ body {
 	margin-top: 20px;
 	float: right;
 	width: 270px;
-	height: 254px;
+	/*height: 254px;*/
 	background-color: #fff;
 }
 
@@ -184,7 +184,6 @@ a.strong {
     border-color: #EEE;
     font-weight: 300;
     font-size: 16px;
-    font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     text-decoration: none;
     text-align: center;
     line-height: 40px;
@@ -208,12 +207,35 @@ a.strong {
     border-color: #7B72E9;
     color: #FFF;
 }
+.button-pill {
+    line-height: 25px;
+    height: 25px;
+    display: inline-block;
+    padding: 0 10px;
+    background-color: #f9f9f9;
+    border: 1px solid rgba(60,60,70,0.3);
+    font-size: 12px;
+    color: #333;
+    text-shadow: 0px 1px 0px #fff;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 1px 0px rgba(66, 66, 77, 0.1);
+}
+.button-login {
+    color: #4d5256;
+}
+.button-login:hover {
+    color: #4d5256;
+    text-decoration: underline;
+}
 .center {
     margin: 0 auto;
     text-align: center;
 }
-
-
+.right-not-login {
+    margin: 25px auto;
+}
 /*底部样式*/
 .footer {
     margin-top: 40px;
@@ -228,6 +250,31 @@ a.strong {
     background-image: none;
 }
 
+/*右侧样式*/
+.web-status{
+    padding: 0 10px 10px 20px;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    border-top: 1px solid #e2e2e2;
+    background-color: #fff;
+}
+.status-wrapper {
+    display: inline-block;
+    width: 79px;
+    font-size: 12px;
+    border-right: 1px solid rgba(100, 100, 100, 0.4);
+}
+.status-wrapper:last-child {
+    border-right: none;
+}
+.status-tip {
+    display: block;
+    margin: 10px auto;
+}
+.right-islogin {
+    margin:20px 0;
+}
 
 
 
