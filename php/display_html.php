@@ -95,6 +95,9 @@ function display_main($flag, $name, $password,$articleid,$email) {
         elseif($flag==='avatar') {
             set_avatar($name);
         }
+        elseif($flag==='forget') {
+            display_forget();
+        }
         ?>
     </div>
 <?php

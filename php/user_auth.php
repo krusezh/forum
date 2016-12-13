@@ -226,3 +226,23 @@ function set_site_and_signature($username) {
     $conn->close();
 }
 
+function send_pwd() {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    if($username && $email) {
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
+            throw new Exception('Wrong email format');
+        }
+        $result = get_use_info($username);
+
+        $row = $result->fetch_row();
+
+        if($email != $row[e_mail]) {
+            throw new Exception('Wrong email');
+        }
+
+        $name_len = strlen($username);
+
+
+    }
+}

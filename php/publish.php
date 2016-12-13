@@ -8,6 +8,7 @@
 
 function publish_article($data) {
     $title = $data['title'];
+    $title = htmlspecialchars($title,ENT_QUOTES);
     $node = $data['node'];
     $content = $data['content'];
     $date = date("Y-m-d H:i:s");
@@ -72,6 +73,7 @@ function publish_article($data) {
 
 function publish_reply($data) {
     $reply_content = $data['replycontent'];
+    $reply_content = htmlspecialchars($reply_content,ENT_QUOTES);
     $article_id = $data['articleid'];
     settype($article_id,'integer');
     $date = date("Y-m-d H:i:s");

@@ -8,8 +8,8 @@
 
 
 function db_connect(){
-    // $host = 'localhost';
-    $host = 'redfolder.cn';
+    $host = 'localhost';
+    //$host = 'redfolder.cn';
     $result = new mysqli($host,'registeruser','1234567890,.?','forumdatabase');
     $result->query("SET NAMES UTF8");
     if(!$result){
