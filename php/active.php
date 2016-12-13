@@ -23,7 +23,7 @@ try {
 
     $result = get_use_info($username);
     $row = $result->fetch_assoc();
-    $str = $row[user_name].$row[reg_time];
+    $str = $row[user_name].date("Y-m-d H:i:s",$row[active_time]);
 
     if($row[active_staus]) {
         throw new Exception('用户邮箱已经验证');
