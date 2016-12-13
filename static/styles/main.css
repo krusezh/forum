@@ -153,6 +153,7 @@ a.strong {
     margin: 15px;
 }
 .article-content {
+    text-align: justify;
     margin-top: 20px;
     border-top: 1px solid #eee;
     padding: 20px 30px;

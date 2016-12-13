@@ -28,7 +28,7 @@ function display_top($place='') {
         <div class="wrapper clearfix">
         <div class="header-logo">FORUM</div>
             <div class="header-nav">
-                <span><a href="http://localhost/phpstorm/forum/">首页</a></span>
+                <span><a href="http://redfolder.cn/forum/">首页</a></span>
                 <?php
                 if(check_valid_user()) {
                     $username = $_SESSION['valid_user'];
@@ -98,6 +98,9 @@ function display_main($flag, $name, $password,$articleid,$email) {
         elseif($flag==='forget') {
             display_forget();
         }
+        elseif($flag==='about') {
+            display_about();
+        }
         ?>
     </div>
 <?php
@@ -166,21 +169,46 @@ function display_buttom() {
     <div class="footer">
         <div class="content wrapper">
             <div class="inner">
-                <div class="sep10"></div>
-                    <div class="fr">
-                    </div>
-                    <strong><a href="/about" class="dark" target="_self">关于</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/faq" class="dark" target="_self">FAQ</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/p/7v9TEc53" class="dark" target="_self">API</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/mission" class="dark" target="_self">我们的愿景</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/ip" class="dark" target="_self">IP 查询</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/advertise" class="dark" target="_self">广告投放</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/advertise/2015.html" class="dark" target="_self">鸣谢</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="/start" class="dark" target="_blank">上网首页</a> &nbsp; <span class="snow">·</span> &nbsp; 1198 人在线</strong> &nbsp; <span class="fade">最高记录 2399</span> &nbsp; <span class="snow">·</span> &nbsp;
-                    <div class="sep20"></div>
-                    创意工作者们的社区
-                    <div class="sep5"></div>
-                    World is powered by solitude
-                    <div class="sep20"></div>
-                    <span class="small fade">VERSION: 3.9.7.5 · 31ms · UTC 05:44 · PVG 13:44 · LAX 21:44 · JFK 00:44<br>♥ Do have faith in what you're doing.</span>
-                    <div class="sep20"></div>
-                    <span class="f12 gray"><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">苏ICP备16060739号</a></span>
-                <div class="sep10"></div>
+                <div><strong>
+                        <a href="http://redfolder.cn/about.php" class="dark" target="_self">关于</a>
+                        &nbsp;
+                        <a href="https://www.v2ex.com/" target="_blank">V2EX</a>
+                        &nbsp;
+                        <a href="https://github.com/livid/v2ex" target="_blank">源码</a>
+                    </strong>
+                </div>
+                <br />
+                <div>创意工作者们的社区</div>
+                <br />
+                <div>World is powered by solitude</div>
+                <div><span>♥ Do have faith in what you're doing.</span></div>
+                <br />
+                <span><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">苏ICP备16060739号</a></span>
             </div>
         </div>
     </div>
 <?php
+}
+
+function display_about() {
+    ?>
+    <br />
+    <h1>关于</h1>
+    这是一个临摹V2EX的网站
+    <br />
+    结构是按着v2的样子做的
+    <br/>
+    代码是自己写的
+    <br />
+    还有很多东西没写出来
+    <br />
+    之后再写
+    <br />
+    <br />
+    注：在看v2关于页面html文件的时候
+    <br />
+    发现V2EX的源代码被托管到了GitHub上
+    <br />
+    然而后台全是py，看了也没什么乱用
+    <?php
 }

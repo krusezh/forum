@@ -14,7 +14,7 @@ function send_email($action, $to, $code) {
         }
     }
     elseif($action=='chpwd') {
-        exec("python sendMail.py $to $code",$arr,$re);
+        exec("python chpwdMail.py $to $code",$arr,$re);
         if($re==1) {
             throw new Exception('邮件发送失败');
         }

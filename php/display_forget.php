@@ -10,22 +10,22 @@ function display_forget() {
     $_SESSION['once'] = $code;
     ?>
     <div>
-        <div>
+        <div class="setting-header">
             <span>通过电子邮件重设密码</span>
         </div>
-        <div>
+        <div class="setting-form">
             <form action="forget_pwd.php" method="post">
                 <div>
-                    <span>用户名</span>
-                    <span><input type="text" name="username"></span>
+                    <span class="setting-left">用户名</span>
+                    <span class="seeting-right"><input type="text" class="sl" name="username"></span>
                 </div>
                 <div>
-                    <span>注册邮箱</span>
-                    <span><input type="url" name="email"></span>
+                    <span class="setting-left">注册邮箱</span>
+                    <span class="seeting-right"><input type="email" class="sl" name="email"></span>
                 </div>
                 <div>
-                    <input type="hidden" name="once" value="$code">
-                    <input type="submit" value="发送邮件">
+                    <input type="hidden" name="once" value="<?php echo $code;?>">
+                    <input class="button button-setting button-save" type="submit" value="发送邮件">
                 </div>
             </form>
         </div>

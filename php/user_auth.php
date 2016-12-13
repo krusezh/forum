@@ -229,20 +229,34 @@ function set_site_and_signature($username) {
 function send_pwd() {
     $username = $_POST['username'];
     $email = $_POST['email'];
+    $password = '';
     if($username && $email) {
         if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
             throw new Exception('Wrong email format');
         }
         $result = get_use_info($username);
 
-        $row = $result->fetch_row();
+        $row = $result->fetch_assoc();
 
         if($email != $row[e_mail]) {
             throw new Exception('Wrong email');
         }
 
-        $name_len = strlen($username);
+        for($i=0; $i<3; $i++) {
+            $password .= chr(mt_rand(65,90));
+            $password .= chr(mt_rand(48,57));
+            $password .= chr(mt_rand(97,122));
+        }
 
+        send_email('chpwd',$email,$password);
 
+        $password = password_hash($password,PASSWORD_DEFAULT);
+        $password = addcslashes($password,'$');
+        $conn = db_connect();
+        $query = "update userinfo set password='$password' where user_name='$username'";
+        $result = $conn->query($query);
+        if(!$result) {
+            throw new Exception('Could not execute query');
+        }
     }
 }

@@ -10,6 +10,10 @@ header("Content-type:text/html;charset=utf-8");
 require_once ('functions.php');
 session_start();
 ob_start();
+echo $_SESSION['once'];
+echo "<br />";
+echo $_POST['once'];
+echo "<br />";
 
 if(isset($_SESSION['once']) && isset($_POST['once'])) {
     if($_SESSION['once'] == $_POST['once']) {
@@ -18,6 +22,8 @@ if(isset($_SESSION['once']) && isset($_POST['once'])) {
                 throw new Exception('404: Not Found');
             }
             send_pwd();
+            echo "发送成功";
+            exit;
         }
         catch (Exception $e) {
             ob_end_clean();
