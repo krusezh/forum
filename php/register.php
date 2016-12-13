@@ -13,7 +13,7 @@ session_start();
 display_head('注册');
 display_top();
 
-$username = stripslashes(trim($_POST['username']));
+$username = htmlspecialchars(stripslashes(trim($_POST['username'])),ENT_QUOTES);
 $userpwd = trim($_POST['password']);
 $email = trim($_POST['email']);
 

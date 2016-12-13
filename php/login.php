@@ -53,6 +53,9 @@ else {
                         <input type="submit" value="登录">
                         <div class="clear"></div>
                     </div>
+                    <div>
+                        <a href="forget_pwd.php">我忘记密码了</a>
+                    </div>
                 </form>
         </div>
     </div>
