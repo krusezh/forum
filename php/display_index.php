@@ -58,7 +58,7 @@ function display_node($tabname) {
 function display_title($tabname) {
     $conn = db_connect();
     $query = "select * from userinfo,article,article_info,node where article.author_id=userinfo.user_id and article.article_id=article_info.article_id ".
-            "and article_info.node_id=node.node_id and node.node_id in (select node_id from tab where tab_name='$tabname') limit 20";
+            "and article_info.node_id=node.node_id and node.node_id in (select node_id from tab where tab_name='$tabname') order by article.post_time desc limit 20";
     $result = $conn->query($query);
 
     if(!$result) {
@@ -116,7 +116,7 @@ function display_specific_node($nodename) {
             if($result->num_rows>0) {
                 $place_begin = ($current_page-1)*20;
                 $query = "select * from userinfo,article,article_info,node where article.author_id=userinfo.user_id and ".
-                    "article.article_id=article_info.article_id and article_info.node_id=node.node_id and node.node_name='$nodename' limit $place_begin,20";
+                    "article.article_id=article_info.article_id and article_info.node_id=node.node_id and node.node_name='$nodename' order by article.post_time desc limit $place_begin,20";
                 $result = $conn->query($query);
                 if(!$result) {
                     throw new Exception('Could not execute query');

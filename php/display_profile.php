@@ -34,7 +34,7 @@ function display_info($username) {
 function display_topic($userid, $username) {
     $conn = db_connect();
     $query = "select * from article, article_info, node where article.article_id=article_info.article_id and article.author_id=".$userid.
-        " and article_info.node_id=node.node_id limit 10";
+        " and article_info.node_id=node.node_id order by article.post_time desc limit 10";
     $result = $conn->query($query);
     if(!$result) {
         throw new Exception('Could not execute query.');
@@ -67,7 +67,7 @@ function display_reply_num($parent_id){
 
 function display_reply($userid) {
     $conn = db_connect();
-    $query = "select * from article,article_content where parent_id<>0 and article.article_id=article_content.article_id and author_id=".$userid." limit 10";
+    $query = "select * from article,article_content where parent_id<>0 and article.article_id=article_content.article_id and author_id=".$userid." order by article.post_time desc limit 10";
     $result = $conn->query($query);
 
     if(!$result){
