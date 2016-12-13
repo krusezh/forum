@@ -202,9 +202,31 @@ a.strong {
     -webkit-transition-duration: .3s;
     transition-duration: .3s;
 }
+
+.button-setting {
+    background-color: #1B9AF7;
+    border-color: #1B9AF7;
+    color: #FFF;
+    border-radius: 200px;
+    color: #fff;
+    padding: 0 10px;
+    line-height: 30px;
+    height: 30px;
+    font-size: 12px;
+}
+.button-setting:hover {
+    background-color: #4cb0f9;
+    border-color: #4cb0f9;
+    color: #FFF;
+}
 .button-royal {
-    background-color: #7B72E9;
-    border-color: #7B72E9;
+    background-color: #1B9AF7;
+    border-color: #1B9AF7;
+    color: #FFF;
+}
+.button-royal:hover {
+    background-color: #4cb0f9;
+    border-color: #4cb0f9;
     color: #FFF;
 }
 .button-pill {
@@ -228,6 +250,10 @@ a.strong {
 .button-login:hover {
     color: #4d5256;
     text-decoration: underline;
+}
+.button-save {
+    margin-top: 15px;
+    margin-left: 300px;
 }
 .center {
     margin: 0 auto;
@@ -287,7 +313,7 @@ a.strong {
 }
 .setting-form {
     text-align: left;
-    height: 200px;
+    height: 210px;
 }
 .setting-left {
     display: inline-block;
@@ -313,8 +339,17 @@ a.strong {
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
     box-sizing: border-box;
 }
-
-
+.publish-img {
+    margin: 20px 0;
+    text-align: left;
+}
+.publish-img .setting-left {
+    margin-right: 20px;
+}
+.change-psd {
+    text-align: left;
+    margin-bottom: 50px;
+}
 
 
 

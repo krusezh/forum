@@ -27,7 +27,7 @@ function display_setting() {
                 <div>
                     <span class="setting-left">电子邮件</span>
                     <span class="seeting-right"><input type="email" class="sl" name="email" value="<?php echo $row[e_mail]?>"></span>
-                    <span><input onclick="location.href='resend_email.php'" value="重发验证邮件" type="button"></span>
+                    <span><input class="button button-setting" style="margin-left: 20px;" onclick="location.href='resend_email.php'" value="重发验证邮件" type="button"></span>
                 </div>
                 <div>
                     <span class="setting-left">个人网站</span>
@@ -39,18 +39,15 @@ function display_setting() {
                 </div>
                 <div>
                     <input type="hidden" name="once" value="<?php echo $code?>">
-                    <span><input type="submit" value="保存设置"></span>
+                    <span><input class="button button-setting button-save" type="submit" value="保存设置"></span>
                 </div>
             </form>
         </div>
     </div>
 
-    <div>
+    <div class="publish-img">
         <div>
-            头像上传
-        </div>
-        <div>
-            <span>当前头像</span>
+            <span class="setting-left">当前头像</span>
             <span><?php echo "<img src='".display_image($row[user_name])."' width='73' height='73'>";?></span>
             &nbsp;
             <span><?php echo "<img src='".display_image($row[user_name])."' width='48' height='48'>";?></span>
@@ -58,31 +55,28 @@ function display_setting() {
             <span><?php echo "<img src='".display_image($row[user_name])."' width='24' height='24'>";?></span>
         </div>
         <div>
-            <input onclick="location.href='avatar.php'" value="上传新头像" type="button">
+            <input class="button button-setting" style='margin-left: 294px;' onclick="location.href='avatar.php'" value="上传新头像" type="button">
         </div>
     </div>
 
     <div>
-        <div>
-            更改密码
-        </div>
-        <div>
+        <div class="change-psd">
             <form method="post" action="setting.php">
                 <div>
-                    <span>当前密码</span>
-                    <span><input type="password" name="current_password"></span>
+                    <span class="setting-left">当前密码</span>
+                    <span><input class="sl" type="password" name="current_password"></span>
                 </div>
                 <div>
-                    <span>新密码</span>
-                    <span><input type="password" name="new_password"></span>
+                    <span class="setting-left">新密码</span>
+                    <span><input class="sl" type="password" name="new_password"></span>
                 </div>
                 <div>
-                    <span>再次输入新密码</span>
-                    <span><input type="password" name="again_password"></span>
+                    <span class="setting-left">再次输入新密码</span>
+                    <span><input class="sl" type="password" name="again_password"></span>
                 </div>
                 <div>
                     <input type="hidden" name="once" value="<?php echo $code?>">
-                    <input type="submit" value="更改密码">
+                    <input class="button button-setting" style="margin-top:15px;margin-left: 300px;" type="submit" value="更改密码">
                 </div>
             </form>
         </div>

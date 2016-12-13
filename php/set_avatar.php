@@ -13,14 +13,14 @@ function set_avatar($username) {
     $row = $result->fetch_assoc();
     ?>
     <div>
-        <div>
+        <div class="setting-header">
             <span>设置</span>
             &nbsp;
             <span>></span>
             &nbsp;
             <span>头像上传</span>
         </div>
-        <div>
+        <div style="margin-top: 40px;">
             <form method="post" action="avatar.php" enctype="multipart/form-data">
                 <div>
                     <span>当前头像</span>
@@ -30,13 +30,12 @@ function set_avatar($username) {
                     &nbsp;
                     <span><?php echo "<img src='".display_image($row[user_name])."' width='24' height='24'>";?></span>
                 </div>
-                <div>
-                    <span>选择一个图片文件</span>
-                    <span><input name="avatar" type="file"></span>
+                <div style="margin: 40px 0px;">
+                    <span style="margin-left: 100px;"><input name="avatar" type="file"></span>
                 </div>
                 <div>
                     <input type="hidden" name="once" value="<?php echo $code?>">
-                    <input type="submit" value="开始上传">
+                    <input class="button button-setting" type="submit" value="开始上传">
                 </div>
             </form>
         </div>
