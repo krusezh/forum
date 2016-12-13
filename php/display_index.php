@@ -72,7 +72,7 @@ function display_title($tabname) {
             echo "</a></span>";
             echo "<span><a style='font-size:18px;line-height:35px;' href='./php/article.php?username=$row[user_name]&articleid=$row[article_id]'>$row[title]</a></span>";
             echo "<br />";
-            echo "<span><a class='node' href='./php/node.php?nodename=$row[nodename]'>$row[node_name]</a> &nbsp;&nbsp; &nbsp; •<a class='strong' href='./php/profile.php?username=$row[user_name]'>$row[user_name]&nbsp;</a>发表于&nbsp;&nbsp;$row[post_time]</span>&nbsp;&nbsp;&nbsp;&nbsp;回复数：";
+            echo "<span><a class='node' href='./php/node.php?nodename=$row[node_name]'>$row[node_name]</a> &nbsp;&nbsp; &nbsp; •<a class='strong' href='./php/profile.php?username=$row[user_name]'>$row[user_name]&nbsp;</a>发表于&nbsp;&nbsp;$row[post_time]</span>&nbsp;&nbsp;&nbsp;&nbsp;回复数：";
             display_reply_num($row[article_id]);
             echo "</div>";
         }

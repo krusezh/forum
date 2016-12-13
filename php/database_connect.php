@@ -8,7 +8,9 @@
 
 
 function db_connect(){
-    $result = new mysqli('localhost','registeruser','1234567890,.?','forumdatabase');
+    $host = 'localhost';
+    //$host = 'redfolder.cn';
+    $result = new mysqli($host,'registeruser','1234567890,.?','forumdatabase');
     $result->query("SET NAMES UTF8");
     if(!$result){
         throw new Exception('Could not connect to database server');
