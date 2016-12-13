@@ -92,8 +92,7 @@ function display_reply_of_article($articleid) {
                 echo "<div class='cell reply'>";
                     //回复内容
                     echo "<div style='font-size:14px'>";
-                        $Parsedown = new Parsedown();
-                        echo $Parsedown->text($row[article_content]);
+                        echo $row[article_content];
                     echo "</div>";
                     //回复者姓名
                     echo "<div style='font-size:14px;margin-top: 10px;'>";
