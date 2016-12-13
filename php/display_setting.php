@@ -15,26 +15,26 @@ function display_setting() {
     $_SESSION['once'] = $code;
     ?>
     <div>
-        <div>
+        <div class="setting-header">
             设置
         </div>
-        <div>
+        <div class="setting-form">
             <form method="post" action="setting.php">
                 <div>
-                    <span>用户名</span>
-                    <span><?php echo $row[user_name]?></span>
+                    <span class="setting-left">用户名</span>
+                    <span class="seeting-right"><?php echo $row[user_name]?></span>
                 </div>
                 <div>
-                    <span>电子邮件</span>
-                    <span><input type="email" name="email" value="<?php echo $row[e_mail]?>"></span>
+                    <span class="setting-left">电子邮件</span>
+                    <span class="seeting-right"><input type="email" class="sl" name="email" value="<?php echo $row[e_mail]?>"></span>
                 </div>
                 <div>
-                    <span>个人网站</span>
-                    <span><input type="url" name="personal_website"></span>
+                    <span class="setting-left">个人网站</span>
+                    <span class="seeting-right"><input type="url" class="sl" name="personal_website"></span>
                 </div>
                 <div>
-                    <span>签名</span>
-                    <span><input type="text" name="signature"></span>
+                    <span class="setting-left">签名</span>
+                    <span class="seeting-right"><input type="text" class="sl" name="signature"></span>
                 </div>
                 <div>
                     <input type="hidden" name="once" value="<?php echo $code?>">
