@@ -27,6 +27,7 @@ function display_setting() {
                 <div>
                     <span class="setting-left">电子邮件</span>
                     <span class="seeting-right"><input type="email" class="sl" name="email" value="<?php echo $row[e_mail]?>"></span>
+                    <span><input onclick="location.href='resend_email.php'" value="重发验证邮件" type="button"></span>
                 </div>
                 <div>
                     <span class="setting-left">个人网站</span>

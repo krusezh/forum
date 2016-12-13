@@ -12,9 +12,10 @@ function register($username, $password, $email){
     $image_url = $gravatar->getSrc();
     $password = password_hash($password, PASSWORD_DEFAULT);
     $date = date("Y-m-d H:i:s");
-    $active_code = password_hash($username.$date,PASSWORD_DEFAULT);
-    $active_code = addcslashes($active_code,'$');
     $active_time = time()+60*60*24;
+    $active_date = date("Y-m-d H:i:s",$active_time);
+    $active_code = password_hash($username.$active_date,PASSWORD_DEFAULT);
+    $active_code = addcslashes($active_code,'$');
 
 
     $conn = db_connect();
@@ -33,7 +34,7 @@ function register($username, $password, $email){
         throw new Exception('Could not register you in database1 - please try again later.');
     }
 
-    send_email($email,$active_code);
+    send_email('active',$email,$active_code);
 
     $conn->close();
     return true;
