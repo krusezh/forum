@@ -170,7 +170,7 @@ function display_buttom() {
         <div class="content wrapper">
             <div class="inner">
                 <div><strong>
-                        <a href="http://redfolder.cn/about.php" class="dark" target="_self">关于</a>
+                        <a href="http://redfolder.cn/forum/about.php" class="dark" target="_self">关于</a>
                         &nbsp;
                         <a href="https://www.v2ex.com/" target="_blank">V2EX</a>
                         &nbsp;
