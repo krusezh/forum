@@ -177,6 +177,9 @@ function display_buttom() {
                         <a href="https://github.com/livid/v2ex" target="_blank">源码</a>
                     </strong>
                 </div>
+                <div>张熹微&nbsp;2014211719</div>
+                <div>沈文森&nbsp;2014211716</div>
+                <div>乔玉鹏&nbsp;2014211739</div>
                 <br />
                 <div>创意工作者们的社区</div>
                 <br />
