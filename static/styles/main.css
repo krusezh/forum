@@ -459,11 +459,12 @@ form.forgot_password{
     margin-top: 22px;
     margin-left: 20px;
     line-height: 24px;
-    color: #ffa800;
+    color:#000;
+    text-decoration: underline;
     text-shadow: 1px 1px 1px #fff;
 }
 .form_wrapper a.forgot:hover{
-    color:#000;
+    color: #ffa800;
 }
 .form_wrapper div.remember{
     float:left;
