@@ -455,11 +455,12 @@ form.forgot_password{
     text-shadow:1px 1px 1px #000;
 }
 .form_wrapper a.forgot{
-    float:right;
-    font-style:italic;
-    line-height:24px;
-    color:#ffa800;
-    text-shadow:1px 1px 1px #fff;
+    float: left;
+    margin-top: 22px;
+    margin-left: 20px;
+    line-height: 24px;
+    color: #ffa800;
+    text-shadow: 1px 1px 1px #fff;
 }
 .form_wrapper a.forgot:hover{
     color:#000;
